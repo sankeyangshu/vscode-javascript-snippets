@@ -1,7 +1,9 @@
-import { window } from 'vscode';
+import { window, commands } from 'vscode';
+import { generateSnippets } from './utils';
 
 export function activate() {
-  window.showInformationMessage('Hello World!');
+  console.log('first');
+  generateSnippets();
 }
 
 export function deactivate() {}

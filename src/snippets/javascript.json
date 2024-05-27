@@ -1,0 +1,26 @@
+{
+  "useStrict": {
+    "prefix": "uss",
+    "body": ["'use strict'"],
+    "description": "Insert 'use strict' Statement",
+    "scope": "javascript,javascriptreact"
+  },
+  "require": {
+    "prefix": "rqr",
+    "body": "require('${1:package}');",
+    "description": "Require a package",
+    "scope": "javascript,javascriptreact"
+  },
+  "requireToConst": {
+    "prefix": "req",
+    "body": "const ${1:packageName} = require('${1:package}');$0",
+    "description": "Require a package to const",
+    "scope": "javascript,javascriptreact"
+  },
+  "moduleExports": {
+    "prefix": "mde",
+    "body": "module.exports = {\n\t$0\n};\n",
+    "description": "Module exports from Common JS",
+    "scope": "javascript,javascriptreact"
+  }
+}
