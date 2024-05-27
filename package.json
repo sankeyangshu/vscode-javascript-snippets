@@ -1,0 +1,69 @@
+{
+  "name": "vscode-javascript-snippets",
+  "displayName": "JavaScript and TypeScript Snippets",
+  "description": "Visual Studio Code snippets for JavaScript and TypeScript",
+  "version": "0.0.0",
+  "publisher": "sankeyangshu",
+  "private": true,
+  "author": "sankeyangshu",
+  "license": "MIT",
+  "homepage": "https://github.com/sankeyangshu/vscode-javascript-snippets#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sankeyangshu/vscode-javascript-snippets"
+  },
+  "bugs": {
+    "url": "https://github.com/sankeyangshu/vscode-javascript-snippets/issues"
+  },
+  "keywords": [
+    "vscode",
+    "snippet",
+    "javascript",
+    "typescript"
+  ],
+  "categories": [
+    "Snippets"
+  ],
+  "main": "./dist/index.js",
+  "icon": "res/logo.png",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "vscode": "^1.40.0"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --external vscode",
+    "dev": "pnpm run build --watch",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "vscode:prepublish": "pnpm run build",
+    "publish": "vsce publish --no-dependencies",
+    "pack": "vsce package --no-dependencies",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp && pnpm run publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/vscode": "^1.89.0",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
+    "@vscode/vsce": "^2.26.1",
+    "bumpp": "^9.4.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "esno": "^4.7.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.7",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vitest": "^1.6.0"
+  }
+}
