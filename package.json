@@ -52,6 +52,9 @@
       }
     ]
   },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --external vscode",
     "dev": "pnpm run build --watch",

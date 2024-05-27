@@ -1,26 +1,172 @@
 {
-  "useStrict": {
+  "🟨 useStrict": {
     "prefix": "uss",
-    "body": ["'use strict'"],
+    "body": [
+      "'use strict'"
+    ],
     "description": "Insert 'use strict' Statement",
     "scope": "javascript,javascriptreact"
   },
-  "require": {
+  "🟨 require": {
     "prefix": "rqr",
     "body": "require('${1:package}');",
     "description": "Require a package",
     "scope": "javascript,javascriptreact"
   },
-  "requireToConst": {
+  "🟨 requireToConst": {
     "prefix": "req",
     "body": "const ${1:packageName} = require('${1:package}');$0",
     "description": "Require a package to const",
     "scope": "javascript,javascriptreact"
   },
-  "moduleExports": {
+  "🟨 moduleExports": {
     "prefix": "mde",
     "body": "module.exports = {\n\t$0\n};\n",
     "description": "Module exports from Common JS",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleAssert": {
+    "key": "consoleAssert",
+    "prefix": "cas",
+    "body": [
+      "console.assert(${1:expression}, ${2:data})"
+    ],
+    "description": "If the specified expression is false, the message is written to the console along with a stack trace",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleClear": {
+    "key": "consoleClear",
+    "prefix": "ccl",
+    "body": [
+      "console.clear()"
+    ],
+    "description": "Clears the console",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleCount": {
+    "key": "consoleCount",
+    "prefix": "cco",
+    "body": [
+      "console.count(${1:message})"
+    ],
+    "description": "Writes the the number of times that count() has been invoked at the same line and with the same label",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleDir": {
+    "key": "consoleDir",
+    "prefix": "cdi",
+    "body": [
+      "console.dir(${1:message})"
+    ],
+    "description": "Prints a JavaScript representation of the specified object",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleError": {
+    "key": "consoleError",
+    "prefix": "cer",
+    "body": [
+      "console.error(${1:message})"
+    ],
+    "description": "Displays a message in the console and also includes a stack trace from where the method was called",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleGroup": {
+    "key": "consoleGroup",
+    "prefix": "cgr",
+    "body": [
+      "console.group('${1:message}')"
+    ],
+    "description": "Groups and indents all following output by an additional level, until console.groupEnd() is called.",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleGroupEnd": {
+    "key": "consoleGroupEnd",
+    "prefix": "cge",
+    "body": [
+      "console.groupEnd()"
+    ],
+    "description": "Closes out the corresponding console.group().",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleLog": {
+    "key": "consoleLog",
+    "prefix": "clg",
+    "body": [
+      "console.log(${1:message})"
+    ],
+    "description": "Displays a message in the console",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleTrace": {
+    "key": "consoleTrace",
+    "prefix": "ctr",
+    "body": [
+      "console.trace(${1:message})"
+    ],
+    "description": "Prints a stack trace from the point where the method was called",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleLogObject": {
+    "key": "consoleLogObject",
+    "prefix": "clo",
+    "body": [
+      "console.log('${1:message}', ${2:message})"
+    ],
+    "description": "Logs property with name.",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleLogJson": {
+    "key": "consoleLogJson",
+    "prefix": "clj",
+    "body": [
+      "console.log('${1:message}', JSON.stringify(${2:message}, null, 2))"
+    ],
+    "description": "Logs stringified JSON property with name.",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleTime": {
+    "key": "consoleTime",
+    "prefix": "ctm",
+    "body": [
+      "console.time('${1:message}')"
+    ],
+    "description": "Console time wrapper",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleTimeEnd": {
+    "key": "consoleTimeEnd",
+    "prefix": "cte",
+    "body": [
+      "console.timeEnd('${1:message}')"
+    ],
+    "description": "Console time end wrapper",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleWarn": {
+    "key": "consoleWarn",
+    "prefix": "cwa",
+    "body": [
+      "console.warn(${1:message})"
+    ],
+    "description": "Displays a message in the console but also displays a yellow warning icon along with the logged message",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleInfo": {
+    "key": "consoleInfo",
+    "prefix": "cin",
+    "body": [
+      "console.info(${1:message})"
+    ],
+    "description": "Displays a message in the console but also displays a blue information icon along with the logged message",
+    "scope": "javascript,javascriptreact"
+  },
+  "🟨 consoleTable": {
+    "key": "consoleTable",
+    "prefix": "ctl",
+    "body": [
+      "console.table([${1:message}])"
+    ],
+    "description": "Logs table to console",
     "scope": "javascript,javascriptreact"
   }
 }
