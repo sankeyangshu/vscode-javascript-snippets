@@ -1,3 +1,3 @@
-# vscode-vue-snippets
+# vscode-javascript-snippets
 
-A Vue 2/3 Code Snippets Extension
+Visual Studio Code snippets for JavaScript and TypeScript
