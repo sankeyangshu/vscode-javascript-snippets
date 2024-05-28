@@ -19,7 +19,17 @@ export type SnippetCollectionType = { [key: string]: SnippetType };
  */
 export const Placeholders = {
   ModuleName: 'moduleName',
+  Module: 'module',
+  Alias: 'alias',
   FunctionName: 'functionName',
+  ClassName: 'className',
+  BaseClassName: 'baseClassName',
+  TypeName: 'typeName',
+  Array: 'array',
+  Object: 'object',
+  Item: 'item',
+  Time: 'time',
+  Error: 'error',
   Expression: 'expression',
   Params: 'params',
   Data: 'data',

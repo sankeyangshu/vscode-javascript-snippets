@@ -49,6 +49,14 @@
       {
         "language": "typescriptreact",
         "path": "./src/snippets/typescript.json"
+      },
+      {
+        "language": "html",
+        "path": "./src/snippets/javascript.json"
+      },
+      {
+        "language": "vue",
+        "path": "./src/snippets/javascript.json"
       }
     ]
   },
