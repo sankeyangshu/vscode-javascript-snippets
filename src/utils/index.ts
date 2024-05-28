@@ -1,22 +1,22 @@
 import { readFile, writeFile } from 'fs';
-import consoleSnippets from '../sourceSnippets/console';
 import { SnippetCollectionType, SnippetType } from '../types';
 import path from 'path'; // 引入 path 模块
 
 /**
- * javascript 代码片段集合
- */
-const javascriptSnippets = [...consoleSnippets];
-
-/**
- * 获取 JavaScript 代码片段集合
+ * 获取代码片段集合
+ * @param list 代码片段数组
+ * @param isTS 是否是 TS 类型
  * @return Javascript 代码片段集合
  */
-export const getJavascriptSnippets = () => {
-  const snippets = javascriptSnippets.reduce((acc, snippet) => {
+export const getSnippets = (list: SnippetType[], isTS?: boolean) => {
+  const scope = isTS
+    ? 'javascript,javascriptreact,typescript,typescriptreact'
+    : 'javascript,javascriptreact';
+
+  const snippets = list.reduce((acc, snippet) => {
     acc[snippet.key] = Object.assign(snippet, {
       ...snippet,
-      scope: 'javascript,javascriptreact',
+      scope,
     });
     return acc;
   }, {} as SnippetCollectionType);
@@ -27,10 +27,9 @@ export const getJavascriptSnippets = () => {
 /**
  * 拼接代码片段前缀
  * @param snippet 代码片段
- * @param isTS 是否是 TS 类型
  * @return 拼接后的代码片段
  */
-export const normalizeSnippet = (snippet: SnippetType, isTS?: boolean) => {
+export const normalizeSnippet = (snippet: SnippetType) => {
   const [primaryPrefix, ...prefix] =
     typeof snippet.prefix === 'string' ? [snippet.prefix] : snippet.prefix;
 
@@ -38,11 +37,6 @@ export const normalizeSnippet = (snippet: SnippetType, isTS?: boolean) => {
 
   if (prefix && prefix.length > 0) {
     finalPrefix = [...finalPrefix, ...prefix];
-  }
-
-  // 判断是否是 TS 类型代码片段，如果是则加上 ts
-  if (isTS) {
-    finalPrefix.push('ts');
   }
 
   return {
@@ -62,21 +56,29 @@ export const normalizeSnippets = (snippets: SnippetCollectionType, isTS?: boolea
 
   // 遍历对象，判断是否是 TS 类型的代码片段
   Object.keys(snippets).forEach((key) => {
-    normalizedSnippets[`${isTS ? '🟦' : '🟨'} ${key}`] = normalizeSnippet(snippets[key], isTS);
+    normalizedSnippets[`${isTS ? '🟦' : '🟨'} ${key}`] = normalizeSnippet(snippets[key]);
   });
 
   return normalizedSnippets;
 };
 
-export const generateSnippets = () => {
+/**
+ * 生成代码片段
+ * @param list 代码片段数组
+ * @param isTS 是否是 TS 类型
+ */
+export const generateSnippets = (list: SnippetType[], isTS?: boolean) => {
   return new Promise(() => {
-    const javascriptSnippets = normalizeSnippets(getJavascriptSnippets());
+    const snippetList = normalizeSnippets(getSnippets(list, isTS), isTS);
+
+    // 要写入的文件路径
+    const tPath = isTS ? '../src/snippets/typescript.json' : '../src/snippets/javascript.json';
 
     // 获取脚本文件所在的目录（dist 目录）
     const scriptDir = path.dirname(__filename);
 
     // 构建 snippets 目录下的 javascript.json 文件的路径
-    const filePath = path.join(scriptDir, '../src/snippets/javascript.json');
+    const filePath = path.join(scriptDir, tPath);
 
     readFile(filePath, 'utf8', (err, data) => {
       if (err) {
@@ -87,7 +89,7 @@ export const generateSnippets = () => {
       const existingContent = JSON.parse(data);
 
       // 合并新内容和已有内容
-      const mergedContent = { ...existingContent, ...javascriptSnippets };
+      const mergedContent = { ...existingContent, ...snippetList };
 
       // 将新内容写回文件
       return writeFile(filePath, JSON.stringify(mergedContent, null, 2), (error) => {
