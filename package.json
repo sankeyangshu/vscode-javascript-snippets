@@ -2,7 +2,7 @@
   "name": "vscode-javascript-typescript-snippets",
   "displayName": "JavaScript and TypeScript Vscode Snippets",
   "description": "Visual Studio Code snippets for JavaScript and TypeScript",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "publisher": "sankeyangshu",
   "private": true,
   "author": "sankeyangshu",
@@ -36,27 +36,27 @@
     "snippets": [
       {
         "language": "javascript",
-        "path": "./src/snippets/javascript.json"
+        "path": "./dist/snippets/javascript.json"
       },
       {
         "language": "javascriptreact",
-        "path": "./src/snippets/javascript.json"
+        "path": "./dist/snippets/javascript.json"
       },
       {
         "language": "typescript",
-        "path": "./src/snippets/typescript.json"
+        "path": "./dist/snippets/typescript.json"
       },
       {
         "language": "typescriptreact",
-        "path": "./src/snippets/typescript.json"
+        "path": "./dist/snippets/typescript.json"
       },
       {
         "language": "html",
-        "path": "./src/snippets/javascript.json"
+        "path": "./dist/snippets/javascript.json"
       },
       {
         "language": "vue",
-        "path": "./src/snippets/javascript.json"
+        "path": "./dist/snippets/javascript.json"
       }
     ]
   },

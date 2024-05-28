@@ -1,16 +1,16 @@
 import { generateSnippets } from './utils';
-import generatedJavascriptSnippets from './snippets/javascript.json';
-import generatedTypescriptSnippets from './snippets/typescript.json';
 import consoleSnippets from './sourceSnippets/console';
 import importSnippets from './sourceSnippets/imports';
 import functionSnippets from './sourceSnippets/function';
 import othersSnippets from './sourceSnippets/others';
+import javascript from './sourceSnippets/javascript';
 import typescript from './sourceSnippets/typescript';
 
 /**
  * javascript 代码片段集合
  */
 const javascriptSnippets = [
+  ...javascript,
   ...consoleSnippets,
   ...importSnippets,
   ...functionSnippets,
@@ -28,14 +28,10 @@ const typescriptSnippets = [
   ...typescript,
 ];
 
-export async function activate() {
-  if (JSON.stringify(generatedJavascriptSnippets).length < 10) {
-    await generateSnippets(javascriptSnippets);
-  }
+export function activate() {
+  generateSnippets(javascriptSnippets);
 
-  if (JSON.stringify(generatedTypescriptSnippets).length < 10) {
-    await generateSnippets(typescriptSnippets, true);
-  }
+  generateSnippets(typescriptSnippets, true);
 }
 
 export function deactivate() {}

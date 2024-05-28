@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'fs';
+import { accessSync, constants, existsSync, mkdirSync, writeFileSync } from 'fs';
 import { SnippetCollectionType, SnippetType } from '../types';
 import path from 'path'; // 引入 path 模块
 
@@ -68,36 +68,43 @@ export const normalizeSnippets = (snippets: SnippetCollectionType, isTS?: boolea
  * @param isTS 是否是 TS 类型
  */
 export const generateSnippets = (list: SnippetType[], isTS?: boolean) => {
-  return new Promise(() => {
+  try {
     const snippetList = normalizeSnippets(getSnippets(list, isTS), isTS);
 
     // 要写入的文件路径
-    const tPath = isTS ? '../src/snippets/typescript.json' : '../src/snippets/javascript.json';
+    const tPath = isTS ? 'typescript.json' : 'javascript.json';
+    const outputPath = path.join(__dirname, '..', 'dist', 'snippets');
 
-    // 获取脚本文件所在的目录（dist 目录）
-    const scriptDir = path.dirname(__filename);
+    // 构建 snippets 目录下的 json 文件的路径
+    const filePath = path.join(outputPath, tPath);
 
-    // 构建 snippets 目录下的 javascript.json 文件的路径
-    const filePath = path.join(scriptDir, tPath);
+    // 监测文件是否存在，不存在则创建
+    existsSync(outputPath) || mkdirSync(outputPath);
 
-    readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      // 解析已有内容为 JSON 对象
-      const existingContent = JSON.parse(data);
+    // 确保文件可读写
+    accessSync(outputPath, constants.R_OK | constants.W_OK);
 
-      // 合并新内容和已有内容
-      const mergedContent = { ...existingContent, ...snippetList };
+    // 读取已有内容
+    // const data = readFileSync(filePath, 'utf8');
+    // console.log('🚀 ~ file: index.ts:98 ~ generateSnippets ~ data:', data);
 
-      // 将新内容写回文件
-      return writeFile(filePath, JSON.stringify(mergedContent, null, 2), (error) => {
-        if (error) {
-          console.error(error);
-        }
-        return;
-      });
-    });
-  });
+    // 解析已有内容为 JSON 对象
+    // const existingContent = JSON.parse(data);
+
+    // 合并新内容和已有内容
+    // const mergedContent = { ...existingContent, ...snippetList };
+
+    // 将新内容写回文件
+    writeFileSync(filePath, JSON.stringify(snippetList, null, 2), 'utf8');
+
+    // 检查是否成功写入文件
+    // const isWriteSuccessful = existsSync(filePath);
+    // if (isWriteSuccessful) {
+    //   console.log(`文件成功写入：${filePath}`);
+    // } else {
+    //   console.log(`文件写入失败：${filePath}`);
+    // }
+  } catch (err) {
+    console.log(err);
+  }
 };
