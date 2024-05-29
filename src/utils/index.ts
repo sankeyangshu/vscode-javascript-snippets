@@ -1,6 +1,6 @@
 import { accessSync, constants, existsSync, mkdirSync, writeFileSync } from 'fs';
-import { SnippetCollectionType, SnippetType } from '../types';
 import path from 'path'; // 引入 path 模块
+import { SnippetCollectionType, SnippetType } from '../types';
 
 /**
  * 获取代码片段集合

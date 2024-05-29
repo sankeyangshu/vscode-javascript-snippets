@@ -1,10 +1,10 @@
-import { generateSnippets } from './utils';
 import consoleSnippets from './sourceSnippets/console';
-import importSnippets from './sourceSnippets/imports';
 import functionSnippets from './sourceSnippets/function';
-import othersSnippets from './sourceSnippets/others';
+import importSnippets from './sourceSnippets/imports';
 import javascript from './sourceSnippets/javascript';
+import othersSnippets from './sourceSnippets/others';
 import typescript from './sourceSnippets/typescript';
+import { generateSnippets } from './utils';
 
 /**
  * javascript 代码片段集合
