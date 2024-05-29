@@ -16,6 +16,15 @@ const exportNamedFunction: SnippetType = {
   description: 'Export named function',
 };
 
+const exportFunction: SnippetType = {
+  key: 'exportFunction',
+  prefix: 'efun',
+  body: [
+    `export function \${1:${Placeholders.FunctionName}}(\${2:${Placeholders.Params}}) {\n\t$0\n}`,
+  ],
+  description: 'Export function',
+};
+
 const exportDefaultFunction: SnippetType = {
   key: 'exportDefaultFunction',
   prefix: 'edf',
@@ -93,6 +102,7 @@ const namedFunction: SnippetType = {
 export default [
   exportNamedVariable,
   exportNamedFunction,
+  exportFunction,
   exportDefaultFunction,
   exportDefaultNamedFunction,
   method,

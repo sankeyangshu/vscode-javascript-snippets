@@ -29,6 +29,7 @@ export const Placeholders = {
   Object: 'object',
   Item: 'item',
   Time: 'time',
+  Result: 'result',
   Error: 'error',
   Expression: 'expression',
   Params: 'params',

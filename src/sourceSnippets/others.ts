@@ -67,7 +67,7 @@ const thenCatch: SnippetType = {
   key: 'thenCatch',
   prefix: 'thenc',
   body: [
-    `.then((\${1:${Placeholders.Item}}) => {\n\t$2\n}).catch((\${3:${Placeholders.Error}}) => {\n\t$4\n})`,
+    `.then((\${1:${Placeholders.Result}}) => {\n\t$2\n}).catch((\${3:${Placeholders.Error}}) => {\n\t$4\n})`,
   ],
   description: 'Add the .then and .catch methods to handle promises',
 };
