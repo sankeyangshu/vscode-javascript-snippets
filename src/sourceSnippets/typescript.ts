@@ -14,4 +14,18 @@ const exportInterface: SnippetType = {
   description: 'Export interface',
 };
 
-export default [exportType, exportInterface];
+const typeSnippet: SnippetType = {
+  key: 'typeSnippet',
+  prefix: 'ttp',
+  body: [`type \${1:${Placeholders.TypeName}} = {\n\t$2\n}`],
+  description: 'Create type',
+};
+
+const interfaceSnippet: SnippetType = {
+  key: 'interfaceSnippet',
+  prefix: 'intf',
+  body: [`interface \${1:${Placeholders.TypeName}} {\n\t$2\n}`],
+  description: 'Create interface',
+};
+
+export default [exportType, exportInterface, typeSnippet, interfaceSnippet];
