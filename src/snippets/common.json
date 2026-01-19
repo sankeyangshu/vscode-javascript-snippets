@@ -1,0 +1,452 @@
+{
+  "consoleLog": {
+    "key": "consoleLog",
+    "prefix": "clg",
+    "body": [
+      "console.log(${1:message})"
+    ],
+    "description": "Displays a message in the console"
+  },
+  "consoleWarn": {
+    "key": "consoleWarn",
+    "prefix": "cwa",
+    "body": [
+      "console.warn(${1:message})"
+    ],
+    "description": "Displays a message in the console but also displays a yellow warning icon along with the logged message"
+  },
+  "consoleError": {
+    "key": "consoleError",
+    "prefix": "cer",
+    "body": [
+      "console.error(${1:message})"
+    ],
+    "description": "Displays a message in the console and also includes a stack trace from where the method was called"
+  },
+  "consoleInfo": {
+    "key": "consoleInfo",
+    "prefix": "cin",
+    "body": [
+      "console.info(${1:message})"
+    ],
+    "description": "Displays a message in the console but also displays a blue information icon along with the logged message"
+  },
+  "consoleTable": {
+    "key": "consoleTable",
+    "prefix": "ctl",
+    "body": [
+      "console.table([${1:message}])"
+    ],
+    "description": "Logs table to console"
+  },
+  "consoleTime": {
+    "key": "consoleTime",
+    "prefix": "ctm",
+    "body": [
+      "console.time('${1:message}')"
+    ],
+    "description": "Console time wrapper"
+  },
+  "consoleAssert": {
+    "key": "consoleAssert",
+    "prefix": "cas",
+    "body": [
+      "console.assert(${1:expression}, ${2:data})"
+    ],
+    "description": "If the specified expression is false, the message is written to the console along with a stack trace"
+  },
+  "consoleClear": {
+    "key": "consoleClear",
+    "prefix": "ccl",
+    "body": [
+      "console.clear()"
+    ],
+    "description": "Clears the console"
+  },
+  "consoleCount": {
+    "key": "consoleCount",
+    "prefix": "cco",
+    "body": [
+      "console.count(${1:message})"
+    ],
+    "description": "Writes the the number of times that count() has been invoked at the same line and with the same label"
+  },
+  "consoleDir": {
+    "key": "consoleDir",
+    "prefix": "cdi",
+    "body": [
+      "console.dir(${1:message})"
+    ],
+    "description": "Prints a JavaScript representation of the specified object"
+  },
+  "consoleGroup": {
+    "key": "consoleGroup",
+    "prefix": "cgr",
+    "body": [
+      "console.group('${1:message}')"
+    ],
+    "description": "Groups and indents all following output by an additional level, until console.groupEnd() is called."
+  },
+  "consoleGroupEnd": {
+    "key": "consoleGroupEnd",
+    "prefix": "cge",
+    "body": [
+      "console.groupEnd()"
+    ],
+    "description": "Closes out the corresponding console.group()."
+  },
+  "consoleTrace": {
+    "key": "consoleTrace",
+    "prefix": "ctr",
+    "body": [
+      "console.trace(${1:message})"
+    ],
+    "description": "Prints a stack trace from the point where the method was called"
+  },
+  "consoleLogObject": {
+    "key": "consoleLogObject",
+    "prefix": "clo",
+    "body": [
+      "console.log('${1:params}', ${2:data})"
+    ],
+    "description": "Logs property with name."
+  },
+  "consoleLogJson": {
+    "key": "consoleLogJson",
+    "prefix": "clj",
+    "body": [
+      "console.log('${1:message}', JSON.stringify(${2:message}, null, 2))"
+    ],
+    "description": "Logs stringified JSON property with name."
+  },
+  "consoleTimeEnd": {
+    "key": "consoleTimeEnd",
+    "prefix": "cte",
+    "body": [
+      "console.timeEnd('${1:message}')"
+    ],
+    "description": "Console time end wrapper"
+  },
+  "importAs": {
+    "key": "importAs",
+    "prefix": "ima",
+    "body": [
+      "import { ${2:moduleName} as ${3:alias} } from '${1:module}'"
+    ],
+    "description": "Import module as alias"
+  },
+  "importDestructing": {
+    "key": "importDestructing",
+    "prefix": "imd",
+    "body": [
+      "import { ${2:} } from '${1:module}'"
+    ],
+    "description": "Import module with destructing"
+  },
+  "importEverything": {
+    "key": "importEverything",
+    "prefix": "ime",
+    "body": [
+      "import * as ${2:moduleName} from '${1:module}'"
+    ],
+    "description": "Import everything as alias"
+  },
+  "importNoModuleName": {
+    "key": "importNoModuleName",
+    "prefix": "imn",
+    "body": [
+      "import '${1:moduleName}'"
+    ],
+    "description": "Import module without module name"
+  },
+  "import": {
+    "key": "import",
+    "prefix": "imp",
+    "body": [
+      "import ${2:moduleName} from '${1:module}'"
+    ],
+    "description": "Import module"
+  },
+  "exportAs": {
+    "key": "exportAs",
+    "prefix": "exa",
+    "body": [
+      "export { ${2:moduleName} as ${3:alias} } from '${1:module}'"
+    ],
+    "description": "Export as alias"
+  },
+  "exportDestructing": {
+    "key": "exportDestructing",
+    "prefix": "exd",
+    "body": [
+      "export { ${2:} } from '${1:module}'"
+    ],
+    "description": "Export with destructing"
+  },
+  "exportDefault": {
+    "key": "exportDefault",
+    "prefix": "exp",
+    "body": [
+      "export default ${1:module}"
+    ],
+    "description": "Export default"
+  },
+  "exportNamedVariable": {
+    "key": "exportNamedVariable",
+    "prefix": "econ",
+    "body": [
+      "export const ${1:params} = ${2:data}"
+    ],
+    "description": "Export named variable"
+  },
+  "exportNamedFunction": {
+    "key": "exportNamedFunction",
+    "prefix": "enf",
+    "body": [
+      "export const ${1:functionName} = (${2:params}) => {\n\t$0\n}"
+    ],
+    "description": "Export named function"
+  },
+  "exportFunction": {
+    "key": "exportFunction",
+    "prefix": "efun",
+    "body": [
+      "export function ${1:functionName}(${2:params}) {\n\t$0\n}"
+    ],
+    "description": "Export function"
+  },
+  "exportDefaultFunction": {
+    "key": "exportDefaultFunction",
+    "prefix": "edf",
+    "body": [
+      "export default (${1:functionName}) => {${2:params}}"
+    ],
+    "description": "Export default function"
+  },
+  "exportDefaultNamedFunction": {
+    "key": "exportDefaultNamedFunction",
+    "prefix": "ednf",
+    "body": [
+      "export default function ${1:functionName}(${2:params}) {\n\t$0\n}"
+    ],
+    "description": "Export default named function"
+  },
+  "method": {
+    "key": "method",
+    "prefix": "met",
+    "body": [
+      "${1:functionName}(${2:params}) {\n\t$0\n}"
+    ],
+    "description": "Creates a method inside a class"
+  },
+  "constructor": {
+    "key": "constructor",
+    "prefix": "con",
+    "body": [
+      "constructor(${1:params}) {\n\t$0\n}"
+    ],
+    "description": "Add default constructor in a class"
+  },
+  "exportClass": {
+    "key": "exportClass",
+    "prefix": "ecl",
+    "body": [
+      "export default class ${1:className} {\n\t$0\n}"
+    ],
+    "description": "Export default class"
+  },
+  "exportClassExtends": {
+    "key": "exportClassExtends",
+    "prefix": "ece",
+    "body": [
+      "export default class ${1:className} extends ${2:baseClassName} {\n\t$0\n}"
+    ],
+    "description": "Export default class which extends a base one"
+  },
+  "propertyGet": {
+    "key": "propertyGet",
+    "prefix": "pge",
+    "body": [
+      "get ${1:functionName}() {",
+      "  return this.$0",
+      "}"
+    ],
+    "description": "Creates a getter property inside a class"
+  },
+  "propertySet": {
+    "key": "propertySet",
+    "prefix": "pse",
+    "body": [
+      "set ${1:functionName}(${2:value}) {\n\t$0\n}"
+    ],
+    "description": "Creates a setter property inside a class"
+  },
+  "anonymousFunction": {
+    "key": "anonymousFunction",
+    "prefix": "anfn",
+    "body": [
+      "(${1:params}) => {\n\t$0\n}"
+    ],
+    "description": "Creates an anonymous function"
+  },
+  "namedFunction": {
+    "key": "namedFunction",
+    "prefix": "nfn",
+    "body": [
+      "const ${1:functionName} = (${2:params}) => {\n\t$0\n}"
+    ],
+    "description": "Creates a named function"
+  },
+  "functionSnippet": {
+    "key": "functionSnippet",
+    "prefix": "fun",
+    "body": [
+      "function ${1:functionName}(${2:params}) {\n\t$0\n}"
+    ],
+    "description": "Creates a function"
+  },
+  "forEach": {
+    "key": "forEach",
+    "prefix": "fre",
+    "body": [
+      "${1:array}.forEach(${2:item} => {\n\t$0\n})"
+    ],
+    "description": "Creates a forEach statement"
+  },
+  "forOf": {
+    "key": "forOf",
+    "prefix": "fof",
+    "body": [
+      "for(const ${1:item} of ${2:array}) {\n\t$0\n}"
+    ],
+    "description": "Iterating over property names of iterable objects"
+  },
+  "forIn": {
+    "key": "forIn",
+    "prefix": "fin",
+    "body": [
+      "for(const ${1:item} in ${2:object}) {\n\t$0\n}"
+    ],
+    "description": "Iterating over property values of iterable objects"
+  },
+  "constVariable": {
+    "key": "constVariable",
+    "prefix": "cos",
+    "body": [
+      "const ${1:params} = ${2:value}"
+    ],
+    "description": "Creates and assigns a local variable"
+  },
+  "destructingObject": {
+    "key": "destructingObject",
+    "prefix": "dob",
+    "body": [
+      "const {${2:value}} = ${1:object}"
+    ],
+    "description": "Creates and assigns a local variable using object destructing"
+  },
+  "destructingArray": {
+    "key": "destructingArray",
+    "prefix": "dar",
+    "body": [
+      "const [${2:data}] = ${1:array}"
+    ],
+    "description": "Creates and assigns a local variable using array destructing"
+  },
+  "setInterval": {
+    "key": "setInterval",
+    "prefix": "sti",
+    "body": [
+      "setInterval(() => { \n\t$2\n }, ${1:time})"
+    ],
+    "description": "Executes the given function at specified intervals"
+  },
+  "setTimeOut": {
+    "key": "setTimeOut",
+    "prefix": "sto",
+    "body": [
+      "setTimeout(() => { \n\t$2\n }, ${1:time})"
+    ],
+    "description": "Executes the given function after the specified delay"
+  },
+  "promise": {
+    "key": "promise",
+    "prefix": "prom",
+    "body": [
+      "return new Promise((resolve, reject) => { \n\t$1\n })"
+    ],
+    "description": "Creates and returns a new Promise"
+  },
+  "thenCatch": {
+    "key": "thenCatch",
+    "prefix": "thenc",
+    "body": [
+      ".then((${1:result}) => {\n\t$2\n}).catch((${3:error}) => {\n\t$4\n})"
+    ],
+    "description": "Add the .then and .catch methods to handle promises"
+  },
+  "useStrict": {
+    "key": "useStrict",
+    "prefix": "uss",
+    "body": [
+      "use strict"
+    ],
+    "description": "Insert 'use strict' Statement"
+  },
+  "require": {
+    "key": "require",
+    "prefix": "rqr",
+    "body": [
+      "require(\"${1:module}\")"
+    ],
+    "description": "Require a package"
+  },
+  "requireToConst": {
+    "key": "requireToConst",
+    "prefix": "req",
+    "body": [
+      "const ${1:moduleName} = require('${2:module}')"
+    ],
+    "description": "Require a package to const"
+  },
+  "moduleExports": {
+    "key": "moduleExports",
+    "prefix": "mde",
+    "body": [
+      "module.exports = {\n\t$0\n}"
+    ],
+    "description": "Module exports from Common JS"
+  },
+  "exportType": {
+    "key": "exportType",
+    "prefix": "etp",
+    "body": [
+      "export type ${1:typeName} = {\n\t$2\n}"
+    ],
+    "description": "Export type"
+  },
+  "exportInterface": {
+    "key": "exportInterface",
+    "prefix": "eint",
+    "body": [
+      "export interface ${1:typeName} {\n\t$2\n}"
+    ],
+    "description": "Export interface"
+  },
+  "typeSnippet": {
+    "key": "typeSnippet",
+    "prefix": "tp",
+    "body": [
+      "type ${1:typeName} = {\n\t$2\n}"
+    ],
+    "description": "Create type"
+  },
+  "interfaceSnippet": {
+    "key": "interfaceSnippet",
+    "prefix": "int",
+    "body": [
+      "interface ${1:typeName} {\n\t$2\n}"
+    ],
+    "description": "Create interface"
+  }
+}

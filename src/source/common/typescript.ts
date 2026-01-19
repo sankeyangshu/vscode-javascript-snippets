@@ -1,29 +1,30 @@
-import { Placeholders, SnippetType } from '../types';
+import type { Snippet } from '../../types';
+import { Placeholders } from '../../types';
 
-const exportType: SnippetType = {
+const exportType: Snippet = {
   key: 'exportType',
-  prefix: 'exptp',
+  prefix: 'etp',
   body: [`export type \${1:${Placeholders.TypeName}} = {\n\t$2\n}`],
   description: 'Export type',
 };
 
-const exportInterface: SnippetType = {
+const exportInterface: Snippet = {
   key: 'exportInterface',
-  prefix: 'expint',
+  prefix: 'eint',
   body: [`export interface \${1:${Placeholders.TypeName}} {\n\t$2\n}`],
   description: 'Export interface',
 };
 
-const typeSnippet: SnippetType = {
+const typeSnippet: Snippet = {
   key: 'typeSnippet',
-  prefix: 'ttp',
+  prefix: 'tp',
   body: [`type \${1:${Placeholders.TypeName}} = {\n\t$2\n}`],
   description: 'Create type',
 };
 
-const interfaceSnippet: SnippetType = {
+const interfaceSnippet: Snippet = {
   key: 'interfaceSnippet',
-  prefix: 'intf',
+  prefix: 'int',
   body: [`interface \${1:${Placeholders.TypeName}} {\n\t$2\n}`],
   description: 'Create interface',
 };

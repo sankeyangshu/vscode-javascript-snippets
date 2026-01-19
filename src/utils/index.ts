@@ -1,110 +1,47 @@
-import { accessSync, constants, existsSync, mkdirSync, writeFileSync } from 'fs';
-import path from 'path'; // 引入 path 模块
-import { SnippetCollectionType, SnippetType } from '../types';
+import type { Snippet, SnippetCollection } from '../types';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
 
 /**
  * 获取代码片段集合
- * @param list 代码片段数组
- * @param isTS 是否是 TS 类型
- * @return Javascript 代码片段集合
+ * @param snippets 代码片段数组
  */
-export const getSnippets = (list: SnippetType[], isTS?: boolean) => {
-  const scope = isTS
-    ? 'javascript,javascriptreact,typescript,typescriptreact'
-    : 'javascript,javascriptreact';
-
-  const snippets = list.reduce((acc, snippet) => {
-    acc[snippet.key] = Object.assign(snippet, {
-      ...snippet,
-      scope,
-    });
+export function getSnippetCollection(snippets: Snippet[]): SnippetCollection {
+  return snippets.reduce((acc, snippet) => {
+    acc[snippet.key] = snippet;
     return acc;
-  }, {} as SnippetCollectionType);
-
-  return snippets;
-};
-
-/**
- * 拼接代码片段前缀
- * @param snippet 代码片段
- * @return 拼接后的代码片段
- */
-export const normalizeSnippet = (snippet: SnippetType) => {
-  const [primaryPrefix, ...prefix] =
-    typeof snippet.prefix === 'string' ? [snippet.prefix] : snippet.prefix;
-
-  let finalPrefix = [primaryPrefix];
-
-  if (prefix && prefix.length > 0) {
-    finalPrefix = [...finalPrefix, ...prefix];
-  }
-
-  return {
-    ...snippet,
-    prefix: finalPrefix.join('-'),
-  };
-};
-
-/**
- * 格式化代码片段集合 - 判断是否是 TS 类型代码片段
- * @param snippets 代码片段集合
- * @param isTS 是否是 TS 类型
- * @return 格式化后的代码片段集合
- */
-export const normalizeSnippets = (snippets: SnippetCollectionType, isTS?: boolean) => {
-  const normalizedSnippets: SnippetCollectionType = {};
-
-  // 遍历对象，判断是否是 TS 类型的代码片段
-  Object.keys(snippets).forEach((key) => {
-    normalizedSnippets[`${isTS ? '🟦' : '🟨'} ${key}`] = normalizeSnippet(snippets[key]);
-  });
-
-  return normalizedSnippets;
-};
+  }, {} as SnippetCollection);
+}
 
 /**
  * 生成代码片段
- * @param list 代码片段数组
- * @param isTS 是否是 TS 类型
+ * @param snippets 代码片段数组
+ * @param filename 文件名（如 'javascript.json'）
  */
-export const generateSnippets = (list: SnippetType[], isTS?: boolean) => {
+export function generateSnippets(snippets: Snippet[], filename: string) {
   try {
-    const snippetList = normalizeSnippets(getSnippets(list, isTS), isTS);
+    // 转换为代码片段集合对象
+    const collection = getSnippetCollection(snippets);
 
     // 要写入的文件路径
-    const tPath = isTS ? 'typescript.json' : 'javascript.json';
-    const outputPath = path.join(__dirname, '..', 'dist', 'snippets');
-
-    // 构建 snippets 目录下的 json 文件的路径
-    const filePath = path.join(outputPath, tPath);
+    const outputPath = path.join(__dirname, '..', 'snippets', filename);
 
     // 监测文件是否存在，不存在则创建
-    existsSync(outputPath) || mkdirSync(outputPath);
+    const outputDir = path.dirname(outputPath);
+    if (!existsSync(outputDir)) {
+      mkdirSync(outputDir, { recursive: true });
+    }
 
-    // 确保文件可读写
-    accessSync(outputPath, constants.R_OK | constants.W_OK);
+    // 将对象序列化为 JSON 字符串并写入文件
+    writeFileSync(
+      outputPath,
+      JSON.stringify(collection, null, 2),
+      'utf-8',
+    );
 
-    // 读取已有内容
-    // const data = readFileSync(filePath, 'utf8');
-    // console.log('🚀 ~ file: index.ts:98 ~ generateSnippets ~ data:', data);
-
-    // 解析已有内容为 JSON 对象
-    // const existingContent = JSON.parse(data);
-
-    // 合并新内容和已有内容
-    // const mergedContent = { ...existingContent, ...snippetList };
-
-    // 将新内容写回文件
-    writeFileSync(filePath, JSON.stringify(snippetList, null, 2), 'utf8');
-
-    // 检查是否成功写入文件
-    // const isWriteSuccessful = existsSync(filePath);
-    // if (isWriteSuccessful) {
-    //   console.log(`文件成功写入：${filePath}`);
-    // } else {
-    //   console.log(`文件写入失败：${filePath}`);
-    // }
+    // eslint-disable-next-line no-console
+    console.log(`✅ Generated snippet file: ${outputPath}`);
   } catch (err) {
-    console.log(err);
+    console.error(`❌ Failed to generate snippet file: ${filename}`, err);
   }
-};
+}
