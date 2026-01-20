@@ -1,6 +1,7 @@
 import type { Snippet, SnippetCollection } from '../types';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import process from 'node:process';
 
 /**
  * 获取代码片段集合
@@ -23,8 +24,8 @@ export function generateSnippets(snippets: Snippet[], filename: string) {
     // 转换为代码片段集合对象
     const collection = getSnippetCollection(snippets);
 
-    // 要写入的文件路径
-    const outputPath = path.join(__dirname, '..', 'snippets', filename);
+    // 直接生成到 dist/snippets
+    const outputPath = path.join(process.cwd(), 'dist', 'snippets', filename);
 
     // 监测文件是否存在，不存在则创建
     const outputDir = path.dirname(outputPath);

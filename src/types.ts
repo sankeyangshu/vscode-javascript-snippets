@@ -48,6 +48,13 @@ export const Placeholders = {
   Delta: 'delta',
   List: 'list',
   KeyPath: 'keyPath',
+  First: 'first',
+  Second: 'second',
+  Third: 'third',
+  Fourth: 'fourth',
+  Fifth: 'fifth',
+  Sixth: 'sixth',
+  FileName: `\${TM_FILENAME_BASE}`,
 } as const;
 
 /**
