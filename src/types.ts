@@ -42,6 +42,12 @@ export const Placeholders = {
   Value: 'value',
   Label: 'label',
   Message: 'message',
+  Should: 'should',
+  Group: 'group',
+  Number: 'number',
+  Delta: 'delta',
+  List: 'list',
+  KeyPath: 'keyPath',
 } as const;
 
 /**
