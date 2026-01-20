@@ -2,14 +2,14 @@ import type { Snippet } from '../../types';
 import { Placeholders } from '../../types';
 
 const consoleLog: Snippet = {
-  key: 'consoleLog',
+  key: 'console.log',
   prefix: 'clg',
   body: [`console.log(\${1:${Placeholders.Message}})`],
   description: 'Displays a message in the console',
 };
 
 const consoleWarn: Snippet = {
-  key: 'consoleWarn',
+  key: 'console.warn',
   prefix: 'cwa',
   body: [`console.warn(\${1:${Placeholders.Message}})`],
   description:
@@ -17,7 +17,7 @@ const consoleWarn: Snippet = {
 };
 
 const consoleError: Snippet = {
-  key: 'consoleError',
+  key: 'console.error',
   prefix: 'cer',
   body: [`console.error(\${1:${Placeholders.Message}})`],
   description:
@@ -25,7 +25,7 @@ const consoleError: Snippet = {
 };
 
 const consoleInfo: Snippet = {
-  key: 'consoleInfo',
+  key: 'console.info',
   prefix: 'cin',
   body: [`console.info(\${1:${Placeholders.Message}})`],
   description:
@@ -33,21 +33,21 @@ const consoleInfo: Snippet = {
 };
 
 const consoleTable: Snippet = {
-  key: 'consoleTable',
+  key: 'console.table',
   prefix: 'ctl',
   body: [`console.table([\${1:${Placeholders.Message}}])`],
   description: 'Logs table to console',
 };
 
 const consoleTime: Snippet = {
-  key: 'consoleTime',
+  key: 'console.time',
   prefix: 'ctm',
   body: [`console.time('\${1:${Placeholders.Message}}')`],
   description: 'Console time wrapper',
 };
 
 const consoleAssert: Snippet = {
-  key: 'consoleAssert',
+  key: 'console.assert',
   prefix: 'cas',
   body: [`console.assert(\${1:${Placeholders.Expression}}, \${2:${Placeholders.Data}})`],
   description:
@@ -55,14 +55,14 @@ const consoleAssert: Snippet = {
 };
 
 const consoleClear: Snippet = {
-  key: 'consoleClear',
+  key: 'console.clear',
   prefix: 'ccl',
   body: ['console.clear()'],
   description: 'Clears the console',
 };
 
 const consoleCount: Snippet = {
-  key: 'consoleCount',
+  key: 'console.count',
   prefix: 'cco',
   body: [`console.count(\${1:${Placeholders.Message}})`],
   description:
@@ -70,14 +70,14 @@ const consoleCount: Snippet = {
 };
 
 const consoleDir: Snippet = {
-  key: 'consoleDir',
+  key: 'console.dir',
   prefix: 'cdi',
   body: [`console.dir(\${1:${Placeholders.Message}})`],
   description: 'Prints a JavaScript representation of the specified object',
 };
 
 const consoleGroup: Snippet = {
-  key: 'consoleGroup',
+  key: 'console.group',
   prefix: 'cgr',
   body: [`console.group('\${1:${Placeholders.Message}}')`],
   description:
@@ -85,28 +85,28 @@ const consoleGroup: Snippet = {
 };
 
 const consoleGroupEnd: Snippet = {
-  key: 'consoleGroupEnd',
+  key: 'console.groupEnd',
   prefix: 'cge',
   body: ['console.groupEnd()'],
   description: 'Closes out the corresponding console.group().',
 };
 
 const consoleTrace: Snippet = {
-  key: 'consoleTrace',
+  key: 'console.trace',
   prefix: 'ctr',
   body: [`console.trace(\${1:${Placeholders.Message}})`],
   description: 'Prints a stack trace from the point where the method was called',
 };
 
 const consoleLogObject: Snippet = {
-  key: 'consoleLogObject',
+  key: 'console.log.object',
   prefix: 'clo',
   body: [`console.log('\${1:${Placeholders.Params}}', \${2:${Placeholders.Data}})`],
   description: 'Logs property with name.',
 };
 
 const consoleLogJson: Snippet = {
-  key: 'consoleLogJson',
+  key: 'console.log.json',
   prefix: 'clj',
   body: [
     `console.log('\${1:${Placeholders.Message}}', JSON.stringify(\${2:${Placeholders.Message}}, null, 2))`,
@@ -115,7 +115,7 @@ const consoleLogJson: Snippet = {
 };
 
 const consoleTimeEnd: Snippet = {
-  key: 'consoleTimeEnd',
+  key: 'console.timeEnd',
   prefix: 'cte',
   body: [`console.timeEnd('\${1:${Placeholders.Message}}')`],
   description: 'Console time end wrapper',

@@ -2,7 +2,7 @@ import type { Snippet } from '../../types';
 import { Placeholders } from '../../types';
 
 const useStrict: Snippet = {
-  key: 'useStrict',
+  key: 'use.strict',
   prefix: 'uss',
   body: ['use strict'],
   description: 'Insert \'use strict\' Statement',
@@ -16,14 +16,14 @@ const require: Snippet = {
 };
 
 const requireToConst: Snippet = {
-  key: 'requireToConst',
+  key: 'require.to.const',
   prefix: 'req',
   body: [`const \${1:${Placeholders.ModuleName}} = require('\${2:${Placeholders.Module}}')`],
   description: 'Require a package to const',
 };
 
 const moduleExports: Snippet = {
-  key: 'moduleExports',
+  key: 'module.exports',
   prefix: 'mde',
   body: ['module.exports = {\n\t$0\n}'],
   description: 'Module exports from Common JS',
