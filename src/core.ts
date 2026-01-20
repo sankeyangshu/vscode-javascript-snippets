@@ -3,6 +3,7 @@ import type { ConfigCache, SnippetDefinition } from './types';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { CompletionItem, CompletionItemKind, languages, MarkdownString, SnippetString, window, workspace } from 'vscode';
+import * as meta from './generated/meta';
 
 /**
  * 代码片段管理
@@ -46,42 +47,37 @@ export class SnippetManager {
    */
   private updateConfigCache() {
     // 启用的框架列表
-    this.cachedConfig.enabledFrameworks = workspace.getConfiguration('framework').get<string[]>('enabled', ['vue', 'react', 'nest', 'vitest']);
+    this.cachedConfig.enabledFrameworks = workspace
+      .getConfiguration()
+      .get(meta.configs.frameworkEnabled.key, meta.configs.frameworkEnabled.default);
 
     // React 配置
     const reactLanguageScopes = workspace
-      .getConfiguration('react')
-      .get<string>('languageScopes', 'typescript,typescriptreact,javascript,javascriptreact');
+      .getConfiguration()
+      .get(meta.configs.reactLanguageScopes.key, meta.configs.reactLanguageScopes.default);
     this.cachedConfig.react.languageScopes = reactLanguageScopes.split(',').map((s) => s.trim());
 
     this.cachedConfig.react.importReactOnTop = workspace
-      .getConfiguration('react')
-      .get<boolean>('importReactOnTop', false);
+      .getConfiguration()
+      .get(meta.configs.reactImportReactOnTop.key, meta.configs.reactImportReactOnTop.default);
 
     // Vue 配置
     const vueLanguageScopes = workspace
-      .getConfiguration('vue')
-      .get<string>('languageScopes', 'vue,typescript,javascript');
+      .getConfiguration()
+      .get(meta.configs.vueLanguageScopes.key, meta.configs.vueLanguageScopes.default);
     this.cachedConfig.vue.languageScopes = vueLanguageScopes.split(',').map((s) => s.trim());
 
     this.cachedConfig.vue.uniappCodeSnippets = workspace
-      .getConfiguration('vue')
-      .get<boolean>('uniappCodeSnippets', true);
+      .getConfiguration()
+      .get(meta.configs.vueUniappCodeSnippets.key, meta.configs.vueUniappCodeSnippets.default);
 
     this.cachedConfig.vue.vuexCodeSnippets = workspace
-      .getConfiguration('vue')
-      .get<boolean>('vuexCodeSnippets', false);
+      .getConfiguration()
+      .get(meta.configs.vueVuexCodeSnippets.key, meta.configs.vueVuexCodeSnippets.default);
 
     this.cachedConfig.vue.useTemplateSnippets = workspace
-      .getConfiguration('vue')
-      .get<string[]>('useTemplateSnippets', [
-        'vinit',
-        'vinit-scss',
-        'vbase',
-        'vbase-scss',
-        'vts',
-        'vts-scss',
-      ]);
+      .getConfiguration()
+      .get(meta.configs.vueUseTemplateSnippets.key, meta.configs.vueUseTemplateSnippets.default);
 
     // 最后更新时间
     this.cachedConfig.lastUpdateTime = Date.now();
@@ -194,27 +190,22 @@ export class SnippetManager {
     const configChangeListener = workspace.onDidChangeConfiguration((e) => {
       let configChanged = false;
 
-      // 检查是否是代码片段配置发生了变化
-      if (e.affectsConfiguration('framework.enabled')) {
-        configChanged = true;
-      }
+      // 检查所有配置项是否发生变化
+      const configKeys: meta.ConfigKey[] = [
+        meta.configs.frameworkEnabled.key,
+        meta.configs.reactLanguageScopes.key,
+        meta.configs.reactImportReactOnTop.key,
+        meta.configs.vueLanguageScopes.key,
+        meta.configs.vueUniappCodeSnippets.key,
+        meta.configs.vueVuexCodeSnippets.key,
+        meta.configs.vueUseTemplateSnippets.key,
+      ];
 
-      // 检查是否是 React 配置发生了变化
-      if (
-        e.affectsConfiguration('react.languageScopes')
-        || e.affectsConfiguration('react.importReactOnTop')
-      ) {
-        configChanged = true;
-      }
-
-      // 检查是否是 Vue 配置发生了变化
-      if (
-        e.affectsConfiguration('vue.languageScopes')
-        || e.affectsConfiguration('vue.uniappCodeSnippets')
-        || e.affectsConfiguration('vue.vuexCodeSnippets')
-        || e.affectsConfiguration('vue.useTemplateSnippets')
-      ) {
-        configChanged = true;
+      for (const key of configKeys) {
+        if (e.affectsConfiguration(key)) {
+          configChanged = true;
+          break;
+        }
       }
 
       // 如果配置发生了变化，更新缓存并通知用户
