@@ -61,7 +61,7 @@ export class SnippetManager {
     // Vue 配置
     const vueLanguageScopes = workspace
       .getConfiguration('vue')
-      .get<string>('languageScopes', 'typescript,javascript');
+      .get<string>('languageScopes', 'vue,typescript,javascript');
     this.cachedConfig.vue.languageScopes = vueLanguageScopes.split(',').map((s) => s.trim());
 
     this.cachedConfig.vue.uniappCodeSnippets = workspace
@@ -74,7 +74,14 @@ export class SnippetManager {
 
     this.cachedConfig.vue.useTemplateSnippets = workspace
       .getConfiguration('vue')
-      .get<string[]>('useTemplateSnippets', []);
+      .get<string[]>('useTemplateSnippets', [
+        'vinit',
+        'vinit-scss',
+        'vbase',
+        'vbase-scss',
+        'vts',
+        'vts-scss',
+      ]);
 
     // 最后更新时间
     this.cachedConfig.lastUpdateTime = Date.now();
@@ -245,11 +252,21 @@ export class SnippetManager {
 
       // 如果是 Vue 框架，需要根据配置过滤
       if (framework === 'vue') {
-        // 检查是否在 useTemplateSnippets 列表中
-        if (
-          this.cachedConfig.vue.useTemplateSnippets.length > 0
-          && !this.cachedConfig.vue.useTemplateSnippets.includes(prefix)
-        ) {
+        // 过滤 uniapp 代码片段
+        if (!this.cachedConfig.vue.uniappCodeSnippets && prefix.startsWith('uni')) {
+          return;
+        }
+
+        // 过滤 vuex 代码片段
+        if (!this.cachedConfig.vue.vuexCodeSnippets && prefix.startsWith('vuex')) {
+          return;
+        }
+
+        // 过滤模板代码片段 - 只显示在 useTemplateSnippets 列表中的模板片段
+        const templatePrefixes = ['vinit', 'vbase', 'vts'];
+        const isTemplateSnippet = templatePrefixes.some((tp) => prefix.startsWith(tp));
+
+        if (isTemplateSnippet && !this.cachedConfig.vue.useTemplateSnippets.includes(prefix)) {
           return; // 跳过不在列表中的模板片段
         }
       }
@@ -265,12 +282,11 @@ export class SnippetManager {
 
       // 如果是 React 框架且配置了 importReactOnTop，在组件顶部添加 React 导入
       if (framework === 'react' && this.cachedConfig.react.importReactOnTop) {
-        // 检查是否是组件片段（包含 component 或 Component）
-        if (
-          prefix.toLowerCase().includes('component')
-          || body.includes('export')
-          || body.includes('function')
-        ) {
+        // 检查是否是组件片段（包含 export/function/const/class 且包含 JSX）
+        const isComponent = (body.includes('export') || body.includes('function') || body.includes('const'))
+          && (body.includes('return (') || body.includes('<'));
+
+        if (isComponent && !body.includes('import React')) {
           // 在顶部添加 React 导入
           body = `import React from 'react';\n\n${body}`;
         }
