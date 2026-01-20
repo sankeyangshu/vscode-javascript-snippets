@@ -1,6 +1,6 @@
 {
   "publisher": "sankeyangshu",
-  "name": "vscode-javascript-snippets",
+  "name": "vscode-javascript-typescript-snippets",
   "displayName": "JavaScript and TypeScript Vscode Snippets",
   "version": "0.2.0",
   "private": true,
