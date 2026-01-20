@@ -1,12 +1,15 @@
-<h1 align="center">
-  <img src="https://github.com/sankeyangshu/vscode-javascript-snippets/blob/main/res/logo.png?raw=true" width="80"/>
-</h1>
+<h1 align="center">✨vscode-javascript-snippets✨</h1>
 
 <p align="center">
-<i>Visual Studio Code snippets for JavaScript and TypeScript.</i>
+  <img src="https://img.shields.io/github/license/sankeyangshu/vscode-javascript-snippets?colorA=363a4f&colorB=8CB90E&style=for-the-badge" alt="license" />
+  <img src="https://img.shields.io/github/package-json/v/sankeyangshu/vscode-javascript-snippets?colorA=363a4f&colorB=f5a97f&style=for-the-badge" alt="version" />
+  <img src="https://img.shields.io/github/languages/top/sankeyangshu/vscode-javascript-snippets?colorA=363a4f&colorB=1278B9&style=for-the-badge" alt="languages" />
+  <img src="https://img.shields.io/github/repo-size/sankeyangshu/vscode-javascript-snippets?colorA=363a4f&colorB=1278B9&style=for-the-badge" alt="repo-size" />
 </p>
 
-# vscode-javascript-snippets
+<h2 align="center">
+<sub>snippets for js, ts, react, vue and nestjs.</sub>
+</h2>
 
 ## Installation
 
@@ -27,83 +30,49 @@ There you have either the option to show the already installed snippets or insta
 - Html (.html)
 - Vue (.vue)
 
+## Configurations
+
+<!-- configs -->
+
+| Key                       | Description                                                                                                                                                            | Type      | Default                                                        |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------------------------------------------------------------- |
+| `framework.enabled`       | Select which framework snippets to enable                                                                                                                              | `array`   | `["vue","react","nest","vitest"]`                              |
+| `react.languageScopes`    | Defines the language scopes for which the snippets will be available.
+Use comma separated values.
+For example: `typescript,typescriptreact,javascript,javascriptreact` | `string`  | `"typescript,typescriptreact,javascript,javascriptreact"`      |
+| `react.importReactOnTop`  | Controls if snippets should add `import React from 'react';` at the top of components.
+Use if you have React +17 and use jsx transform.                                | `boolean` | `false`                                                        |
+| `vue.languageScopes`      | Defines the language scopes for which the snippets will be available.
+Use comma separated values.
+For example: `vue,typescript,javascript`                             | `string`  | `"vue,typescript,javascript"`                                  |
+| `vue.uniappCodeSnippets`  | Whether to support uniapp code snippets                                                                                                                                | `boolean` | `true`                                                         |
+| `vue.vuexCodeSnippets`    | Whether to support vuex code snippets                                                                                                                                  | `boolean` | `false`                                                        |
+| `vue.useTemplateSnippets` | Defines the template snippets for which the snippets will be available                                                                                                 | `array`   | `["vinit","vinit-scss","vbase","vbase-scss","vts","vts-scss"]` |
+
+<!-- configs -->
+
 ## Snippets
 
-Below is a list of all available snippets and the triggers of each one. The **⇥** means the `TAB` key.
+### Common Snippets
 
-### Basic Methods
+For complete Common snippets documentation, visit [Common Snippets](./docs/common.md)
 
-| Trigger | Content                                                                                             |
-| ------: | --------------------------------------------------------------------------------------------------- |
-|  `imp→` | imports entire module `import moduleName from 'module'`                                             |
-|  `imn→` | imports entire module without module name `import 'module'`                                         |
-|  `imd→` | imports only a portion of the module using destructing `import { moduleName } from 'module'`        |
-|  `ime→` | imports everything as alias from the module `import * as localAlias from 'module'`                  |
-|  `ima→` | imports only a portion of the module as alias `import { moduleName  as localRename } from 'module'` |
-|  `exp→` | exports default `export default first`                                                              |
-|  `exd→` | export destructing `export { second } from first`                                                   |
-|  `exa→` | export destructing as alias `export { second  as alias } from first`                                |
-|  `rqr→` | require package `require('')`                                                                       |
-|  `req→` | require package to const `const packageName = require('packageName')`                               |
-|  `mde→` | default module.exports `module.exports = {}`                                                        |
-| `econ→` | exports name variable `export const nameVariable = localVariable`                                   |
-|  `enf→` | exports name function `export const log = (parameter) => { console.log(parameter);}`                |
-|  `edf→` | exports default function `export default (parameter) => { console.log(parameter);}`                 |
-| `ednf→` | exports default class `export default function fileName (parameter){ console.log(parameter);}`      |
+### React Snippets
 
-### Class helpers
+For complete React snippets documentation, visit [React Snippets](./docs/react.md)
 
-| Trigger | Content                                                                                               |
-| ------: | ----------------------------------------------------------------------------------------------------- |
-|  `ecl→` | exports default class `export default class Calculator { }`                                           |
-|  `ece→` | exports default class by extending a base one `export default class Calculator extends BaseClass { }` |
-|  `con→` | adds default constructor in the class `constructor() {}`                                              |
-|  `met→` | creates a method inside a class `functionName() {}`                                                   |
-|  `pge→` | creates a getter property `get propertyName() {return value;}`                                        |
-|  `pse→` | creates a setter property `set propertyName(value) {}`                                                |
+### Vue Snippets
 
-### Typescript methods
+For complete Vue snippets documentation, visit [Vue Snippets](./docs/vue.md)
 
-|   Trigger | Content                                      |
-| --------: | -------------------------------------------- |
-|  `exptp→` | Export type `export type first = {}`         |
-| `expint→` | Export interface `export interface first {}` |
+### Vitest Snippets
 
-### Various methods
+For complete Vitest snippets documentation, visit [Vitest Snippets](./docs/vitest.md)
 
-|  Trigger | Content                                                                                |
-| -------: | -------------------------------------------------------------------------------------- |
-|   `fre→` | forEach loop in ES6 syntax `array.forEach(item => {})`                                 |
-|   `fof→` | for ... of loop `for(const item of array) {}`                                          |
-|   `fin→` | for ... in loop `for(const item in object) {}`                                         |
-|   `cos→` | creates and assigns a local variable `const first = second`                            |
-|   `dob→` | destructing object syntax `const {value} = object`                                     |
-|   `dar→` | destructing array syntax `const [first, second] = [1,2]`                               |
-|   `sti→` | set interval helper method `setInterval(() => {})`                                     |
-|   `sto→` | set timeout helper method `setTimeout(() => {})`                                       |
-|  `prom→` | creates a new Promise `return new Promise((resolve, reject) => {})`                    |
-| `thenc→` | adds then and catch declaration to a promise `.then((res) => {}).catch((error) => {})` |
+### NestJS Snippets
 
-### Console methods
-
-| Trigger | Content                                                          |
-| ------: | ---------------------------------------------------------------- |
-|  `cas→` | console alert method `console.assert(expression, data)`          |
-|  `ccl→` | console clear `console.clear()`                                  |
-|  `cco→` | console count `console.count(message)`                           |
-|  `cdi→` | console dir `console.dir(message)`                               |
-|  `cer→` | console error `console.error(message)`                           |
-|  `cgr→` | console group `console.group(message)`                           |
-|  `cge→` | console groupEnd `console.groupEnd()`                            |
-|  `clg→` | console log `console.log(message)`                               |
-|  `ctr→` | console trace `console.trace(message)`                           |
-|  `clo→` | console log object with name `console.log('params :>> ', data);` |
-|  `cwa→` | console warn `console.warn`                                      |
-|  `cin→` | console info `console.info`                                      |
-|  `clt→` | console table `console.table`                                    |
-|  `cti→` | console time `console.time`                                      |
-|  `cte→` | console timeEnd `console.timeEnd`                                |
+For complete NestJS snippets documentation, visit [NestJS Snippets](./docs/nest.md)
 
 ## License
 
-[MIT License](https://github.com/sankeyangshu/vscode-javascript-snippets/blob/main/LICENSE)
+[MIT](./LICENSE) License © 2024-PRESENT [sankeyangshu](https://github.com/sankeyangshu)
