@@ -1,0 +1,65 @@
+import type { Snippet } from '../../types';
+import { Placeholders } from '../../types';
+
+const nestUnitTest: Snippet = {
+  key: 'nest.test',
+  prefix: 'n-test',
+  body: [
+    'import { Test } from \'@nestjs/testing\';',
+    `import { \${1:${Placeholders.First}}Controller } from './\${2:${Placeholders.Second}}.controller';`,
+    `import { \${1:${Placeholders.First}}Service } from './\${2:${Placeholders.Second}}.service';`,
+    '',
+    `describe('\${1:${Placeholders.First}}Controller', () => {`,
+    `\tlet \${2:${Placeholders.Second}}Controller: \${1:${Placeholders.First}}Controller;`,
+    `\tlet \${2:${Placeholders.Second}}Service: \${1:${Placeholders.First}}Service;`,
+    '',
+    '\tbeforeEach(async () => {',
+    '\t\tconst module = await Test.createTestingModule({',
+    `\t\t\tcontrollers: [\${1:${Placeholders.First}}Controller],`,
+    `\t\t\tproviders: [\${1:${Placeholders.First}}Service],`,
+    '\t\t}).compile();',
+    '',
+    `\t\t\${2:${Placeholders.Second}}Service = module.get<\${1:${Placeholders.First}}Service>(\${1:${Placeholders.First}}Service);`,
+    `\t\t\${2:${Placeholders.Second}}Controller = module.get<\${1:${Placeholders.First}}Controller>(\${1:${Placeholders.First}}Controller);`,
+    '\t});',
+    '',
+    '\tdescribe(\'findAll\', () => {',
+    '\t\tit(\'should return an array of users\', async () => {',
+    '\t\t\tconst result = [\'test\'];',
+    `\t\t\tjest.spyOn(\${2:${Placeholders.Second}}Service, 'findAll').mockImplementation(() => result);`,
+    '\t\t\t$0',
+    `\t\t\texpect(await \${2:${Placeholders.Second}}Controller.findAll()).toBe(result);`,
+    '\t\t});',
+    '\t});',
+    '});',
+  ],
+  description: 'NestJS Unit Test',
+};
+
+const nestServiceTest: Snippet = {
+  key: 'nest.test.service',
+  prefix: 'n-test-service',
+  body: [
+    'import { Test } from \'@nestjs/testing\';',
+    `import { \${1:${Placeholders.First}}Service } from './\${2:${Placeholders.Second}}.service';`,
+    '',
+    `describe('\${1:${Placeholders.First}} Test suite', () => {`,
+    `\tlet \${2:${Placeholders.Second}}Service: \${1:${Placeholders.First}}Service;`,
+    '',
+    '\tbeforeEach(async () => {',
+    '\t\tconst module = await Test.createTestingModule({',
+    `\t\t\tproviders: [\${1:${Placeholders.First}}Service],`,
+    '\t\t}).compile();',
+    '',
+    `\t\t\${2:${Placeholders.Second}}Service = module.get<\${1:${Placeholders.First}}Service>(\${1:${Placeholders.First}}Service);`,
+    '\t});',
+    '',
+    '\tit(\'should be defined\', () => {',
+    `\t\texpect(\${2:${Placeholders.Second}}Service).toBeDefined();`,
+    '\t});',
+    '});',
+  ],
+  description: 'NestJS Service Unit Test',
+};
+
+export default [nestUnitTest, nestServiceTest];
