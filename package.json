@@ -2,7 +2,7 @@
   "publisher": "sankeyangshu",
   "name": "vscode-javascript-typescript-snippets",
   "displayName": "JavaScript and TypeScript Vscode Snippets",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "packageManager": "pnpm@10.28.0",
   "description": "Code snippets for js, ts, vue, react, nestjs, etc.",
