@@ -133,10 +133,8 @@ export class SnippetManager {
           const enabledFrameworks = this.cachedConfig.enabledFrameworks;
 
           // JavaScript 和 TypeScript 始终启用（加载 common）
-          if (languageId === 'javascript') {
-            this.addSnippetsToItems(items, 'common');
-          }
-          if (languageId === 'typescript') {
+          const shouldLoadCommon = ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'html'].includes(languageId);
+          if (shouldLoadCommon) {
             this.addSnippetsToItems(items, 'common');
           }
 
