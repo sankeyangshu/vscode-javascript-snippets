@@ -132,36 +132,56 @@ export class SnippetManager {
           // 使用缓存的配置，避免频繁读取
           const enabledFrameworks = this.cachedConfig.enabledFrameworks;
 
-          // JavaScript 和 TypeScript 始终启用（加载 common）
+          // JavaScript 和 TypeScript 基础代码片段始终启用（加载 common）
+          // 包括：js、ts、jsx、tsx、vue 文件
           const shouldLoadCommon = ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'html'].includes(languageId);
           if (shouldLoadCommon) {
             this.addSnippetsToItems(items, 'common');
           }
 
-          // Vue
-          if (
-            languageId === 'vue'
-            && enabledFrameworks.includes('vue')
-            && this.cachedConfig.vue.languageScopes.includes(languageId)
-          ) {
-            this.addSnippetsToItems(items, 'vue');
+          // Vue - 根据代码片段类型和语言环境智能过滤
+          if (enabledFrameworks.includes('vue') && this.cachedConfig.vue.languageScopes.includes(languageId)) {
+            // 定义纯模板指令片段（只在 .vue 文件中可用）
+            const vueOnlyPrefixes = ['vfor', 'vmodel', 'von', 'vbind', 'vif', 'vshow', 'vtext', 'vhtml', 'vpre', 'vcloak', 'vonce', 'vstyle', 'vclass', 'vslot'];
+            // 定义模板代码片段前缀
+            const templatePrefixes = ['vinit', 'vbase', 'vts'];
+
+            this.addSnippetsToItems(items, 'vue', (prefix) => {
+              // 在 .vue 文件中，所有片段都可用
+              if (languageId === 'vue')
+                return true;
+
+              // 在 .js/.ts 文件中，只加载 router/pinia/vuex/script 相关片段
+              // 排除纯模板指令片段和模板代码片段
+              if (languageId === 'javascript' || languageId === 'typescript') {
+                const isVueOnlyPrefix = vueOnlyPrefixes.some((p) => prefix.startsWith(p));
+                const isTemplatePrefix = templatePrefixes.some((p) => prefix.startsWith(p));
+                return !isVueOnlyPrefix && !isTemplatePrefix;
+              }
+
+              return false;
+            });
           }
 
-          // React
-          if (
-            (languageId === 'javascriptreact' || languageId === 'typescriptreact')
-            && enabledFrameworks.includes('react')
-            && this.cachedConfig.react.languageScopes.includes(languageId)
-          ) {
-            this.addSnippetsToItems(items, 'react');
+          // React - 根据代码片段类型和语言环境智能过滤
+          if (enabledFrameworks.includes('react') && this.cachedConfig.react.languageScopes.includes(languageId)) {
+            this.addSnippetsToItems(items, 'react', (prefix) => {
+              // zustand 在所有支持的语言中都可用（js/ts/jsx/tsx）
+              if (prefix.startsWith('rzust') || prefix.startsWith('rtzust')) {
+                return true;
+              }
+
+              // 其他 React 片段（组件、hooks等）只在 JSX/TSX 中可用
+              return languageId === 'javascriptreact' || languageId === 'typescriptreact';
+            });
           }
 
-          // NestJS
+          // NestJS - 只在 TypeScript 中可用
           if (languageId === 'typescript' && enabledFrameworks.includes('nest')) {
             this.addSnippetsToItems(items, 'nest');
           }
 
-          // Vitest
+          // Vitest - 在 JS/TS 文件中可用
           if (
             (languageId === 'javascript' || languageId === 'typescript')
             && enabledFrameworks.includes('vitest')
@@ -225,8 +245,13 @@ export class SnippetManager {
    * 将指定框架的代码片段添加到代码提示列表中
    * @param items 代码提示项列表
    * @param framework 框架名称
+   * @param filter 可选的过滤函数，用于根据 prefix 过滤代码片段
    */
-  private addSnippetsToItems(items: CompletionItem[], framework: string): void {
+  private addSnippetsToItems(
+    items: CompletionItem[],
+    framework: string,
+    filter?: (prefix: string) => boolean,
+  ): void {
     // 从缓存中获取该框架的代码片段
     const snippets = this.cachedSnippets.get(framework);
 
@@ -239,6 +264,11 @@ export class SnippetManager {
       // 获取代码片段的前缀
       const prefix = typeof snippet.prefix === 'string' ? snippet.prefix : snippet.prefix[0];
 
+      // 如果提供了过滤函数，使用过滤函数判断是否应该添加该片段
+      if (filter && !filter(prefix)) {
+        return;
+      }
+
       // 如果是 Vue 框架，需要根据配置过滤
       if (framework === 'vue') {
         // 过滤 uniapp 代码片段
@@ -247,7 +277,7 @@ export class SnippetManager {
         }
 
         // 过滤 vuex 代码片段
-        if (!this.cachedConfig.vue.vuexCodeSnippets && prefix.startsWith('vuex')) {
+        if (!this.cachedConfig.vue.vuexCodeSnippets && prefix.startsWith('vx')) {
           return;
         }
 
