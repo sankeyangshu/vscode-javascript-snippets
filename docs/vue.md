@@ -191,11 +191,22 @@ methods: {
 
 ### Vue Pinia
 
-| Snippet   | Purpose              |
-| --------- | -------------------- |
-| `vpinia`  | Base for Pinia store |
-| `vgetter` | Vue Pinia getters    |
-| `vaction` | Vue Pinia actions    |
+| Snippet        | Purpose                                |
+| -------------- | -------------------------------------- |
+| `vpinia`       | Base for Pinia store (Options API)    |
+| `vpinia-setup` | Pinia Setup Store (Composition API)    |
+| `vgetter`      | Vue Pinia getters                      |
+| `vaction`      | Vue Pinia actions                      |
+
+#### `vpinia-setup`
+
+```javascript
+import { defineStore } from 'pinia';
+
+export const useCounterStore = defineStore('counter', () => {
+  return {};
+});
+```
 
 ### UniApp Template
 

@@ -44,4 +44,22 @@ const vuePiniaAction: Snippet = {
   description: 'vue pinia action',
 };
 
-export default [vuePiniaStore, vuePiniaGetters, vuePiniaAction];
+/**
+ * vpinia-setup 代码片段 - Setup Store 写法
+ */
+const vuePiniaSetupStore: Snippet = {
+  key: 'vue.pinia.setup',
+  prefix: 'vpinia-setup',
+  body: [
+    'import { defineStore } from \'pinia\';',
+    '',
+    `export const \${1:${Placeholders.First}} = defineStore('\${2:${Placeholders.Second}}', () => {`,
+    '\t$0',
+    '',
+    '\treturn {};',
+    '});',
+  ],
+  description: 'Pinia Setup Store with Composition API',
+};
+
+export default [vuePiniaStore, vuePiniaGetters, vuePiniaAction, vuePiniaSetupStore];
