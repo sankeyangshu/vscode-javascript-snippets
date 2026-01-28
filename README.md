@@ -8,7 +8,7 @@
 </p>
 
 <h2 align="center">
-<sub>snippets for js, ts, react, vue and nestjs.</sub>
+<sub>snippets for js, ts, react, vue, nestjs and vitest.</sub>
 </h2>
 
 ## Installation
