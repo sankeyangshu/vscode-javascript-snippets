@@ -7,7 +7,7 @@ const zustand: Snippet = {
   body: [
     'import { create } from \'zustand\'',
     '',
-    `const \${1:${Placeholders.First}} = create((set) => ({`,
+    `export const \${1:${Placeholders.First}} = create((set) => ({`,
     `  \${2:${Placeholders.Second}}`,
     '',
     '}))',
@@ -25,7 +25,7 @@ const zustandTypescript: Snippet = {
     '',
     '}',
     '',
-    `const \${2:${Placeholders.Second}} = create<\${1:${Placeholders.First}}>()((set) => ({`,
+    `export const \${2:${Placeholders.Second}} = create<\${1:${Placeholders.First}}>()((set) => ({`,
     `  \${3:${Placeholders.Third}}`,
     '',
     '}))',
