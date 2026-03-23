@@ -139,7 +139,7 @@ const uniappOptionsOnPageScroll: Snippet = {
 const uniappCompositionOnLoad: Snippet = {
   key: 'uniapp.composition.onLoad',
   prefix: 'u3onLoad',
-  body: [`onLoad((\${1:${Placeholders.First}}) => {`, '\t$0', '}),'],
+  body: [`onLoad((\${1:${Placeholders.First}}) => {`, '\t$0', '})'],
   description: 'onLoad 监听页面加载',
 };
 
@@ -149,7 +149,7 @@ const uniappCompositionOnLoad: Snippet = {
 const uniappCompositionOnShow: Snippet = {
   key: 'uniapp.composition.onShow',
   prefix: 'u3onShow',
-  body: ['onShow(() => {', '\t$0', '}),'],
+  body: ['onShow(() => {', '\t$0', '})'],
   description: 'onShow 监听页面显示',
 };
 
@@ -159,7 +159,7 @@ const uniappCompositionOnShow: Snippet = {
 const uniappCompositionOnReady: Snippet = {
   key: 'uniapp.composition.onReady',
   prefix: 'u3onReady',
-  body: ['onReady(() => {', '\t$0', '}),'],
+  body: ['onReady(() => {', '\t$0', '})'],
   description: 'onReady 监听页面初次渲染完成',
 };
 
@@ -169,7 +169,7 @@ const uniappCompositionOnReady: Snippet = {
 const uniappCompositionOnHide: Snippet = {
   key: 'uniapp.composition.onHide',
   prefix: 'u3onHide',
-  body: ['onHide(() => {', '\t$0', '}),'],
+  body: ['onHide(() => {', '\t$0', '})'],
   description: 'onHide 监听页面隐藏',
 };
 
@@ -179,7 +179,7 @@ const uniappCompositionOnHide: Snippet = {
 const uniappCompositionOnUnload: Snippet = {
   key: 'uniapp.composition.onUnload',
   prefix: 'u3onUnload',
-  body: ['onUnload(() => {', '\t$0', '}),'],
+  body: ['onUnload(() => {', '\t$0', '})'],
   description: 'onUnload 监听页面卸载',
 };
 
