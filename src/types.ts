@@ -3,7 +3,7 @@
  */
 export interface Snippet {
   key: string;
-  prefix: string | string[];
+  prefix: string;
   body: string[];
   description?: string;
   scope?: string;

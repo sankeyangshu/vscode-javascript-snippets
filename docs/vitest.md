@@ -9,23 +9,23 @@ Every space inside `{ }` and `( )` means that this is pushed into next line :)
 
 ### Vitest Test Structure
 
-| Snippet     | Purpose                                            |
-| ----------- | -------------------------------------------------- |
-| `iv`        | essential imports for vitest                       |
-| `ive`       | extra imports for vitest                           |
-| `d`, `desc` | creates a describe block                           |
-| `do`        | creates a describe block that runs only            |
-| `ds`        | creates a describe block that will be skipped      |
-| `i`, `it`   | creates an it block                                |
-| `io`        | creates an it block that runs only                 |
-| `is`        | creates an it block that will be skipped           |
-| `itd`       | creates a test placeholder                         |
-| `ia`        | creates an it block with async callback function   |
-| `t`         | creates a test block                               |
-| `to`        | creates a test block that runs only                |
-| `ts`        | creates a test block that will be skipped          |
-| `ttd`       | creates a test placeholder                         |
-| `ta`        | creates an test block with async callback function |
+| Snippet | Purpose                                            |
+| ------- | -------------------------------------------------- |
+| `iv`    | essential imports for vitest                       |
+| `ive`   | extra imports for vitest                           |
+| `desc`  | creates a describe block                           |
+| `do`    | creates a describe block that runs only            |
+| `ds`    | creates a describe block that will be skipped      |
+| `it`    | creates an it block                                |
+| `io`    | creates an it block that runs only                 |
+| `is`    | creates an it block that will be skipped           |
+| `itd`   | creates a test placeholder                         |
+| `ia`    | creates an it block with async callback function   |
+| `t`     | creates a test block                               |
+| `to`    | creates a test block that runs only                |
+| `ts`    | creates a test block that will be skipped          |
+| `ttd`   | creates a test placeholder                         |
+| `ta`    | creates an test block with async callback function |
 
 ### Vitest Lifecycle Hooks
 

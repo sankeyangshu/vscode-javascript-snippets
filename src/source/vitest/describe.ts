@@ -3,7 +3,7 @@ import { Placeholders } from '../../types';
 
 const describe: Snippet = {
   key: 'describe',
-  prefix: ['d', 'desc'],
+  prefix: 'desc',
   body: [`describe('\${1:${Placeholders.Group}}', () => {`, '\t$0', '})'],
   description: 'creates a describe block',
 };

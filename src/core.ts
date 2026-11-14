@@ -216,9 +216,12 @@ export class SnippetManager {
             this.addSnippetsToItems(items, 'nest');
           }
 
-          // Vitest - 在 JS/TS 文件中可用
+          // Vitest - JS/TS 以及 JSX/TSX
           if (
-            (languageId === 'javascript' || languageId === 'typescript') &&
+            (languageId === 'javascript' ||
+              languageId === 'typescript' ||
+              languageId === 'javascriptreact' ||
+              languageId === 'typescriptreact') &&
             enabledFrameworks.includes('vitest')
           ) {
             this.addSnippetsToItems(items, 'vitest');
@@ -298,7 +301,7 @@ export class SnippetManager {
     // 遍历每个代码片段，创建对应的 CompletionItem
     snippets.forEach((snippet) => {
       // 获取代码片段的前缀
-      const prefix = typeof snippet.prefix === 'string' ? snippet.prefix : snippet.prefix[0];
+      const prefix = snippet.prefix;
 
       // 如果提供了过滤函数，使用过滤函数判断是否应该添加该片段
       if (filter && !filter(prefix)) {
@@ -331,6 +334,7 @@ export class SnippetManager {
         prefix,
         CompletionItemKind.Snippet // 类型为代码片段
       );
+      item.filterText = prefix;
 
       // 设置插入文本（使用 SnippetString 支持占位符）
       let body = snippet.body.join('\n');

@@ -3,7 +3,7 @@ import { Placeholders } from '../../types';
 
 const it: Snippet = {
   key: 'it',
-  prefix: ['i', 'it'],
+  prefix: 'it',
   body: [`it('\${1:${Placeholders.Should}}', () => {`, '\t$0', '})'],
   description: 'creates an it block',
 };
