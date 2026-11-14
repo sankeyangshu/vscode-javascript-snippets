@@ -1,7 +1,7 @@
 {
   "name": "vscode-javascript-typescript-snippets",
   "displayName": "JavaScript and TypeScript Vscode Snippets",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "description": "Code snippets for js, ts, vue, react, nestjs, etc.",
   "categories": [
