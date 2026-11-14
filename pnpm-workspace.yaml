@@ -1,8 +1,4 @@
-packages:
-  - examples/*
-  - packages/*
-  - playground
-onlyBuiltDependencies:
-  - esbuild
-  - simple-git-hooks
-  - unrs-resolver
+allowBuilds:
+  '@vscode/vsce-sign': true
+  esbuild: true
+  simple-git-hooks: true
