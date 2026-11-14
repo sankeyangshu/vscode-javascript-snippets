@@ -214,37 +214,37 @@ export default $1;
 
 ### React Hooks
 
-| Snippet              | Purpose                                    |
-| -------------------- | ------------------------------------------ |
-| `useState`           | React useState hook                        |
-| `useEffect`          | React useEffect hook                       |
-| `useContext`         | React useContext hook                      |
-| `useReducer`         | React useReducer hook                      |
-| `useCallback`        | React useCallback hook                     |
-| `useMemo`            | React useMemo hook                         |
-| `useRef`             | React useRef hook                          |
-| `useImperativeHandle`| React useImperativeHandle hook             |
-| `useLayoutEffect`    | React useLayoutEffect hook                 |
+| Snippet               | Purpose                        |
+| --------------------- | ------------------------------ |
+| `useState`            | React useState hook            |
+| `useEffect`           | React useEffect hook           |
+| `useContext`          | React useContext hook          |
+| `useReducer`          | React useReducer hook          |
+| `useCallback`         | React useCallback hook         |
+| `useMemo`             | React useMemo hook             |
+| `useRef`              | React useRef hook              |
+| `useImperativeHandle` | React useImperativeHandle hook |
+| `useLayoutEffect`     | React useLayoutEffect hook     |
 
 ### Zustand
 
-| Snippet      | Purpose                               |
-| ------------ | ------------------------------------- |
-| `rzust`      | Zustand store                         |
-| `rtzust`     | Zustand store with TypeScript         |
+| Snippet  | Purpose                       |
+| -------- | ----------------------------- |
+| `rzust`  | Zustand store                 |
+| `rtzust` | Zustand store with TypeScript |
 
 ### React Native Components
 
-| Snippet  | Purpose                                                      |
-| -------- | ------------------------------------------------------------ |
-| `rnc`    | React Native class component                                 |
-| `rnf`    | React Native functional component                            |
-| `rnfs`   | React Native functional component with StyleSheet            |
-| `rnfe`   | React Native functional export component                     |
-| `rnfes`  | React Native functional export component with StyleSheet     |
-| `rncs`   | React Native class component with StyleSheet                 |
-| `rnce`   | React Native class export component                          |
-| `rnpc`   | React Native pure class component                            |
-| `rnpce`  | React Native pure class export component                     |
-| `imrn`   | Import from React Native                                     |
-| `rnstyle`| React Native StyleSheet                                      |
+| Snippet   | Purpose                                                  |
+| --------- | -------------------------------------------------------- |
+| `rnc`     | React Native class component                             |
+| `rnf`     | React Native functional component                        |
+| `rnfs`    | React Native functional component with StyleSheet        |
+| `rnfe`    | React Native functional export component                 |
+| `rnfes`   | React Native functional export component with StyleSheet |
+| `rncs`    | React Native class component with StyleSheet             |
+| `rnce`    | React Native class export component                      |
+| `rnpc`    | React Native pure class component                        |
+| `rnpce`   | React Native pure class export component                 |
+| `imrn`    | Import from React Native                                 |
+| `rnstyle` | React Native StyleSheet                                  |

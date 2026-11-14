@@ -13,36 +13,32 @@ Every space inside `{ }` and `( )` means that this is pushed into next line :)
 
 ```vue
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-data() {
-  return {
-    $0
-  }
-},
-methods: {
-  $0
-},
-}
+  data() {
+    return {
+      $0,
+    };
+  },
+  methods: {
+    $0,
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
 ```
 
-| Snippet         | Purpose                                                        |
-| --------------- | -------------------------------------------------------------- |
-| `vinit-scss`    | Base for Vue Single File Component with SCSS                   |
-| `vinit-less`    | Base for Vue Single File Component with Less                   |
-| `vinit-sass`    | Base for Vue Single File Component with Sass                   |
-| `vinit-stylus`  | Base for Vue Single File Component with Stylus                 |
-| `vinit-postcss` | Base for Vue Single File Component with PostCss                |
+| Snippet         | Purpose                                         |
+| --------------- | ----------------------------------------------- |
+| `vinit-scss`    | Base for Vue Single File Component with SCSS    |
+| `vinit-less`    | Base for Vue Single File Component with Less    |
+| `vinit-sass`    | Base for Vue Single File Component with Sass    |
+| `vinit-stylus`  | Base for Vue Single File Component with Stylus  |
+| `vinit-postcss` | Base for Vue Single File Component with PostCss |
 
 ### Vue Composition API Template
 
@@ -50,27 +46,21 @@ methods: {
 
 ```vue
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
 ```
 
-| Snippet         | Purpose                                                        |
-| --------------- | -------------------------------------------------------------- |
-| `vbase-scss`    | Base for Vue File Composition API with SCSS                    |
-| `vbase-less`    | Base for Vue File Composition API with Less                    |
-| `vbase-sass`    | Base for Vue File Composition API with Sass                    |
-| `vbase-stylus`  | Base for Vue File Composition API with Stylus                  |
-| `vbase-postcss` | Base for Vue File Composition API with PostCss                 |
+| Snippet         | Purpose                                        |
+| --------------- | ---------------------------------------------- |
+| `vbase-scss`    | Base for Vue File Composition API with SCSS    |
+| `vbase-less`    | Base for Vue File Composition API with Less    |
+| `vbase-sass`    | Base for Vue File Composition API with Sass    |
+| `vbase-stylus`  | Base for Vue File Composition API with Stylus  |
+| `vbase-postcss` | Base for Vue File Composition API with PostCss |
 
 ### Vue TypeScript Template
 
@@ -78,27 +68,21 @@ methods: {
 
 ```vue
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
 ```
 
-| Snippet         | Purpose                                                        |
-| --------------- | -------------------------------------------------------------- |
-| `vts-scss`      | Base for Vue Single File Component with Typescript and SCSS    |
-| `vts-less`      | Base for Vue Single File Component with Typescript and Less    |
-| `vts-sass`      | Base for Vue Single File Component with Typescript and Sass    |
-| `vts-stylus`    | Base for Vue Single File Component with Typescript and Stylus  |
-| `vts-postcss`   | Base for Vue Single File Component with Typescript and PostCss |
+| Snippet       | Purpose                                                        |
+| ------------- | -------------------------------------------------------------- |
+| `vts-scss`    | Base for Vue Single File Component with Typescript and SCSS    |
+| `vts-less`    | Base for Vue Single File Component with Typescript and Less    |
+| `vts-sass`    | Base for Vue Single File Component with Typescript and Sass    |
+| `vts-stylus`  | Base for Vue Single File Component with Typescript and Stylus  |
+| `vts-postcss` | Base for Vue Single File Component with Typescript and PostCss |
 
 ### Template
 
@@ -191,12 +175,12 @@ methods: {
 
 ### Vue Pinia
 
-| Snippet        | Purpose                                |
-| -------------- | -------------------------------------- |
-| `vpinia`       | Base for Pinia store (Options API)    |
-| `vpinia-setup` | Pinia Setup Store (Composition API)    |
-| `vgetter`      | Vue Pinia getters                      |
-| `vaction`      | Vue Pinia actions                      |
+| Snippet        | Purpose                             |
+| -------------- | ----------------------------------- |
+| `vpinia`       | Base for Pinia store (Options API)  |
+| `vpinia-setup` | Pinia Setup Store (Composition API) |
+| `vgetter`      | Vue Pinia getters                   |
+| `vaction`      | Vue Pinia actions                   |
 
 #### `vpinia-setup`
 
@@ -214,63 +198,47 @@ export const useCounterStore = defineStore('counter', () => {
 
 ```vue
 <template>
-  <view>
-
-  </view>
+  <view> </view>
 </template>
 
 <script>
 export default {
-data() {
-  return {
-    $0
-  }
-},
-methods: {
-  $0
-},
-}
+  data() {
+    return {
+      $0,
+    };
+  },
+  methods: {
+    $0,
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
 ```
 
 #### `uni3`
 
 ```vue
 <template>
-  <view>
-
-  </view>
+  <view> </view>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
 ```
 
 #### `uni-ts`
 
 ```vue
 <template>
-  <view>
-
-  </view>
+  <view> </view>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
 ```
 
 ### UniApp Snippets

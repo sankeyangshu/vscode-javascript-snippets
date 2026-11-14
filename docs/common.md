@@ -9,24 +9,24 @@ Every space inside `{ }` and `( )` means that this is pushed into next line :)
 
 ### Basic Methods
 
-| Trigger | Content                                                                                             |
-| ------: | --------------------------------------------------------------------------------------------------- |
-|  `imp→` | imports entire module `import moduleName from 'module'`                                             |
-|  `imn→` | imports entire module without module name `import 'module'`                                         |
-|  `imd→` | imports only a portion of the module using destructing `import { moduleName } from 'module'`        |
-|  `ime→` | imports everything as alias from the module `import * as localAlias from 'module'`                  |
-|  `ima→` | imports only a portion of the module as alias `import { moduleName  as localRename } from 'module'` |
-|  `exp→` | exports default `export default first`                                                              |
-|  `exd→` | export destructing `export { second } from first`                                                   |
-|  `exa→` | export destructing as alias `export { second  as alias } from first`                                |
-|  `rqr→` | require package `require('')`                                                                       |
-|  `req→` | require package to const `const packageName = require('packageName')`                               |
-|  `mde→` | default module.exports `module.exports = {}`                                                        |
-| `econ→` | exports name variable `export const nameVariable = localVariable`                                   |
-|  `enf→` | exports name function `export const log = (parameter) => { console.log(parameter);}`                |
-| `efun→` | export function `export function functionName(params) {}`                                           |
-|  `edf→` | exports default function `export default (parameter) => { console.log(parameter);}`                 |
-| `ednf→` | exports default named function `export default function fileName (parameter){ console.log(parameter);}`|
+| Trigger | Content                                                                                                 |
+| ------: | ------------------------------------------------------------------------------------------------------- |
+|  `imp→` | imports entire module `import moduleName from 'module'`                                                 |
+|  `imn→` | imports entire module without module name `import 'module'`                                             |
+|  `imd→` | imports only a portion of the module using destructing `import { moduleName } from 'module'`            |
+|  `ime→` | imports everything as alias from the module `import * as localAlias from 'module'`                      |
+|  `ima→` | imports only a portion of the module as alias `import { moduleName  as localRename } from 'module'`     |
+|  `exp→` | exports default `export default first`                                                                  |
+|  `exd→` | export destructing `export { second } from first`                                                       |
+|  `exa→` | export destructing as alias `export { second  as alias } from first`                                    |
+|  `rqr→` | require package `require('')`                                                                           |
+|  `req→` | require package to const `const packageName = require('packageName')`                                   |
+|  `mde→` | default module.exports `module.exports = {}`                                                            |
+| `econ→` | exports name variable `export const nameVariable = localVariable`                                       |
+|  `enf→` | exports name function `export const log = (parameter) => { console.log(parameter);}`                    |
+| `efun→` | export function `export function functionName(params) {}`                                               |
+|  `edf→` | exports default function `export default (parameter) => { console.log(parameter);}`                     |
+| `ednf→` | exports default named function `export default function fileName (parameter){ console.log(parameter);}` |
 
 ### Class helpers
 
@@ -41,12 +41,12 @@ Every space inside `{ }` and `( )` means that this is pushed into next line :)
 
 ### Typescript methods
 
-|   Trigger | Content                                      |
-| --------: | -------------------------------------------- |
-|    `tp→`  | Type `type first = {}`                       |
-|   `int→`  | Interface `interface first {}`               |
-|   `etp→`  | Export type `export type first = {}`         |
-|  `eint→`  | Export interface `export interface first {}` |
+| Trigger | Content                                      |
+| ------: | -------------------------------------------- |
+|   `tp→` | Type `type first = {}`                       |
+|  `int→` | Interface `interface first {}`               |
+|  `etp→` | Export type `export type first = {}`         |
+| `eint→` | Export interface `export interface first {}` |
 
 ### Various methods
 
@@ -69,21 +69,21 @@ Every space inside `{ }` and `( )` means that this is pushed into next line :)
 
 ### Console methods
 
-| Trigger | Content                                                          |
-| ------: | ---------------------------------------------------------------- |
-|  `cas→` | console alert method `console.assert(expression, data)`          |
-|  `ccl→` | console clear `console.clear()`                                  |
-|  `cco→` | console count `console.count(message)`                           |
-|  `cdi→` | console dir `console.dir(message)`                               |
-|  `cer→` | console error `console.error(message)`                           |
-|  `cgr→` | console group `console.group(message)`                           |
-|  `cge→` | console groupEnd `console.groupEnd()`                            |
-|  `clg→` | console log `console.log(message)`                               |
-|  `ctr→` | console trace `console.trace(message)`                           |
-|  `clo→` | console log object with name `console.log('params :>> ', data);` |
+| Trigger | Content                                                                  |
+| ------: | ------------------------------------------------------------------------ |
+|  `cas→` | console alert method `console.assert(expression, data)`                  |
+|  `ccl→` | console clear `console.clear()`                                          |
+|  `cco→` | console count `console.count(message)`                                   |
+|  `cdi→` | console dir `console.dir(message)`                                       |
+|  `cer→` | console error `console.error(message)`                                   |
+|  `cgr→` | console group `console.group(message)`                                   |
+|  `cge→` | console groupEnd `console.groupEnd()`                                    |
+|  `clg→` | console log `console.log(message)`                                       |
+|  `ctr→` | console trace `console.trace(message)`                                   |
+|  `clo→` | console log object with name `console.log('params :>> ', data);`         |
 |  `clj→` | console log json `console.log('message', JSON.stringify(data, null, 2))` |
-|  `cwa→` | console warn `console.warn`                                      |
-|  `cin→` | console info `console.info`                                      |
-|  `clt→` | console table `console.table`                                    |
-|  `cti→` | console time `console.time`                                      |
-|  `cte→` | console timeEnd `console.timeEnd`                                |
+|  `cwa→` | console warn `console.warn`                                              |
+|  `cin→` | console info `console.info`                                              |
+|  `clt→` | console table `console.table`                                            |
+|  `cti→` | console time `console.time`                                              |
+|  `cte→` | console timeEnd `console.timeEnd`                                        |
