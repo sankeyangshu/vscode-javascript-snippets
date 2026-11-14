@@ -105,7 +105,9 @@ const vueNamedRoutingLinkWithParams: Snippet = {
 const vuePathRoutingLink: Snippet = {
   key: 'vue.path.routing.link',
   prefix: 'vroutepath',
-  body: [`<router-link to="\${1:${Placeholders.First}}">\${2:${Placeholders.Second}}</router-link>`],
+  body: [
+    `<router-link to="\${1:${Placeholders.First}}">\${2:${Placeholders.Second}}</router-link>`,
+  ],
   description: 'Path routing link',
 };
 

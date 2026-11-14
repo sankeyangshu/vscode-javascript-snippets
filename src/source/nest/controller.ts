@@ -5,7 +5,7 @@ const nestController: Snippet = {
   key: 'nest.controller',
   prefix: 'n-controller',
   body: [
-    'import { Controller, Get } from \'@nestjs/common\';',
+    "import { Controller, Get } from '@nestjs/common';",
     '',
     `@Controller('\${1:${Placeholders.First}}')`,
     `export class \${2:${Placeholders.Second}}Controller {`,

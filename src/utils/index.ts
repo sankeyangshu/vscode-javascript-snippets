@@ -1,7 +1,8 @@
-import type { Snippet, SnippetCollection } from '../types';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+
+import type { Snippet, SnippetCollection } from '../types';
 
 /**
  * 获取代码片段集合
@@ -34,13 +35,8 @@ export function generateSnippets(snippets: Snippet[], filename: string) {
     }
 
     // 将对象序列化为 JSON 字符串并写入文件
-    writeFileSync(
-      outputPath,
-      JSON.stringify(collection, null, 2),
-      'utf-8',
-    );
+    writeFileSync(outputPath, JSON.stringify(collection, null, 2), 'utf-8');
 
-    // eslint-disable-next-line no-console
     console.log(`✅ Generated snippet file: ${outputPath}`);
   } catch (err) {
     console.error(`❌ Failed to generate snippet file: ${filename}`, err);

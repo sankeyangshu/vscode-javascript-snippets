@@ -5,7 +5,7 @@ const nestV4Module: Snippet = {
   key: 'nest.v4.module',
   prefix: 'n-v4-module',
   body: [
-    'import { Module } from \'@nestjs/common\';',
+    "import { Module } from '@nestjs/common';",
     `import { \${1:${Placeholders.First}}Controller } from './\${2:${Placeholders.Second}}.controller';`,
     `import { \${1:${Placeholders.First}}Service } from './\${2:${Placeholders.Second}}.service';`,
     '',
@@ -22,7 +22,7 @@ const nestRootModule: Snippet = {
   key: 'nest.module.root',
   prefix: 'n-module-root',
   body: [
-    'import { Module } from \'@nestjs/common\';',
+    "import { Module } from '@nestjs/common';",
     `import { \${1:${Placeholders.First}}Module } from './\${2:${Placeholders.Second}}.module';`,
     '',
     '@Module({',
@@ -37,7 +37,7 @@ const nestNestModule: Snippet = {
   key: 'nest.module.nest',
   prefix: 'n-module-nest',
   body: [
-    'import { Module, NestModule } from \'@nestjs/common\';',
+    "import { Module, NestModule } from '@nestjs/common';",
     `import { \${1:${Placeholders.First}}Module } from './\${2:${Placeholders.Second}}.module';`,
     '',
     '@Module({',
@@ -56,7 +56,7 @@ const nestModule: Snippet = {
   key: 'nest.module',
   prefix: 'n-module',
   body: [
-    'import { Module } from \'@nestjs/common\';',
+    "import { Module } from '@nestjs/common';",
     `import { \${1:${Placeholders.First}}Controller } from './\${2:${Placeholders.Second}}.controller';`,
     '',
     '@Module({',
@@ -72,7 +72,7 @@ const nestGlobalModule: Snippet = {
   key: 'nest.module.global',
   prefix: 'n-module-global',
   body: [
-    'import { Module, Global } from \'@nestjs/common\';',
+    "import { Module, Global } from '@nestjs/common';",
     `import { \${1:${Placeholders.First}}Controller } from './\${2:${Placeholders.Second}}.controller';`,
     '',
     '@Global()',

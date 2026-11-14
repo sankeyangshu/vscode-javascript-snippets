@@ -3,8 +3,8 @@
 
 // Meta info
 export const publisher = 'sankeyangshu';
-export const name = 'vscode-javascript-snippets';
-export const version = '0.1.4';
+export const name = 'vscode-javascript-typescript-snippets';
+export const version = '0.3.2';
 export const displayName = 'JavaScript and TypeScript Vscode Snippets';
 export const description = 'Code snippets for js, ts, vue, react, nestjs, etc.';
 export const extensionId = `${publisher}.${name}`;
@@ -15,22 +15,21 @@ export const extensionId = `${publisher}.${name}`;
 export type CommandKey = never;
 
 /**
- * Commands map registered by `sankeyangshu.vscode-javascript-snippets`
+ * Commands map registered by `sankeyangshu.vscode-javascript-typescript-snippets`
  */
-export const commands = {
-} satisfies Record<string, CommandKey>;
+export const commands = {} satisfies Record<string, CommandKey>;
 
 /**
  * Type union of all configs
  */
-export type ConfigKey
-  = | 'framework.enabled'
-    | 'react.languageScopes'
-    | 'react.importReactOnTop'
-    | 'vue.languageScopes'
-    | 'vue.uniappCodeSnippets'
-    | 'vue.vuexCodeSnippets'
-    | 'vue.useTemplateSnippets';
+export type ConfigKey =
+  | 'framework.enabled'
+  | 'react.languageScopes'
+  | 'react.importReactOnTop'
+  | 'vue.languageScopes'
+  | 'vue.uniappCodeSnippets'
+  | 'vue.vuexCodeSnippets'
+  | 'vue.useTemplateSnippets';
 
 export interface ConfigKeyTypeMap {
   'framework.enabled': ('vue' | 'react' | 'nest' | 'vitest')[];
@@ -68,7 +67,7 @@ export interface ConfigItem<T extends keyof ConfigKeyTypeMap> {
 }
 
 /**
- * Configs map registered by `sankeyangshu.vscode-javascript-snippets`
+ * Configs map registered by `sankeyangshu.vscode-javascript-typescript-snippets`
  */
 export const configs = {
   /**
@@ -143,13 +142,11 @@ export const configs = {
   } as ConfigItem<'vue.useTemplateSnippets'>,
 };
 
-export interface ScopedConfigKeyTypeMap {
-}
+export interface ScopedConfigKeyTypeMap {}
 
 export const scopedConfigs = {
-  scope: 'vscode-javascript-snippets',
-  defaults: {
-  } satisfies ScopedConfigKeyTypeMap,
+  scope: 'vscode-javascript-typescript-snippets',
+  defaults: {} satisfies ScopedConfigKeyTypeMap,
 };
 
 export interface NestedConfigs {
@@ -168,5 +165,4 @@ export interface NestedConfigs {
   };
 }
 
-export interface NestedScopedConfigs {
-}
+export interface NestedScopedConfigs {}

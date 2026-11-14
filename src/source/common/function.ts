@@ -165,9 +165,7 @@ const namedFunction: Snippet = {
 const functionSnippet: Snippet = {
   key: 'function',
   prefix: 'fun',
-  body: [
-    `function \${1:${Placeholders.FunctionName}}(\${2:${Placeholders.Params}}) {\n\t$0\n}`,
-  ],
+  body: [`function \${1:${Placeholders.FunctionName}}(\${2:${Placeholders.Params}}) {\n\t$0\n}`],
   description: 'Creates a function',
 };
 

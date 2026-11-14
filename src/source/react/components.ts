@@ -16,12 +16,7 @@ import {
 const reactArrowFunctionComponent: Snippet = {
   key: 'react.arrow.function.component',
   prefix: 'rafc',
-  body: [
-    `export const \${1:${Placeholders.FileName}} = () => {`,
-    ...innerComponent,
-    '}',
-    '',
-  ],
+  body: [`export const \${1:${Placeholders.FileName}} = () => {`, ...innerComponent, '}', ''],
   description: 'Creates a React Arrow Function Component with ES7 module system',
 };
 
@@ -60,7 +55,7 @@ const reactClassComponentPropTypes: Snippet = {
   key: 'react.class.component.proptypes',
   prefix: 'rccp',
   body: [
-    'import PropTypes from \'prop-types\'',
+    "import PropTypes from 'prop-types'",
     ...reactComponent,
     '',
     `export default class \${1:${Placeholders.FileName}} extends Component {`,
@@ -105,7 +100,7 @@ const reactClassExportComponentWithPropTypes: Snippet = {
   key: 'react.class.export.component.proptypes',
   prefix: 'rcep',
   body: [
-    'import PropTypes from \'prop-types\'',
+    "import PropTypes from 'prop-types'",
     ...reactComponent,
     '',
     `export class \${1:${Placeholders.FileName}} extends Component {`,
@@ -150,7 +145,7 @@ const reactClassPureComponentWithPropTypes: Snippet = {
   key: 'react.class.pure.component.proptypes',
   prefix: 'rpcp',
   body: [
-    'import PropTypes from \'prop-types\'',
+    "import PropTypes from 'prop-types'",
     ...reactPureComponent,
     '',
     `export default class \${1:${Placeholders.FileName}} extends PureComponent {`,
@@ -181,7 +176,7 @@ const reactFunctionMemoComponentWithPropTypes: Snippet = {
   key: 'react.function.memo.component.proptypes',
   prefix: 'rmcp',
   body: [
-    'import PropTypes from \'prop-types\'',
+    "import PropTypes from 'prop-types'",
     ...reactWithMemo,
     '',
     `const \${1:${Placeholders.FileName}} = memo((props) => {`,
@@ -197,12 +192,7 @@ const reactFunctionMemoComponentWithPropTypes: Snippet = {
 const reactFunctionalComponent: Snippet = {
   key: 'react.functional.component',
   prefix: 'rfc',
-  body: [
-    `export default function \${1:${Placeholders.FileName}}() {`,
-    ...innerComponent,
-    '}',
-    '',
-  ],
+  body: [`export default function \${1:${Placeholders.FileName}}() {`, ...innerComponent, '}', ''],
   description: 'Creates a React Functional Component with ES7 module system',
 };
 
@@ -226,12 +216,7 @@ const reactFunctionalComponentWithPropTypes: Snippet = {
 const reactFunctionalExportComponent: Snippet = {
   key: 'react.functional.export.component',
   prefix: 'rfce',
-  body: [
-    `function \${1:${Placeholders.FileName}}() {`,
-    ...innerComponent,
-    '}',
-    ...exportDefault,
-  ],
+  body: [`function \${1:${Placeholders.FileName}}() {`, ...innerComponent, '}', ...exportDefault],
   description: 'Creates a React Functional Component with ES7 module system',
 };
 

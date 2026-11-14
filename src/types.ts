@@ -17,7 +17,9 @@ export type SnippetDefinition = Omit<Snippet, 'key' | 'scope'>;
 /**
  * 代码片段集合类型
  */
-export interface SnippetCollection { [key: string]: Snippet }
+export interface SnippetCollection {
+  [key: string]: Snippet;
+}
 
 /**
  * 占位符

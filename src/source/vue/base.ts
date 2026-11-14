@@ -1,12 +1,12 @@
 /**
  * Vue导入语句
  */
-export const vue = ['import Vue from \'vue\''];
+export const vue = ["import Vue from 'vue'"];
 
 /**
  * Vuex导入语句
  */
-export const vuex = ['import Vuex from \'vuex\''];
+export const vuex = ["import Vuex from 'vuex'"];
 
 /**
  * Vue模板div结构

@@ -158,14 +158,14 @@ const toHaveProperty: Snippet = {
 const toHavePropertyDisabled: Snippet = {
   key: 'toHavePropertyDisabled',
   prefix: 'thpd',
-  body: ['expect($1).toHaveProperty(\'disabled\')$0'],
+  body: ["expect($1).toHaveProperty('disabled')$0"],
   description: 'returns true if the property disabled',
 };
 
 const toHavePropertySelected: Snippet = {
   key: 'toHavePropertySelected',
   prefix: 'thps',
-  body: ['expect($1).toHaveProperty(\'disabled\')$0'],
+  body: ["expect($1).toHaveProperty('disabled')$0"],
   description: 'returns true if the property selected',
 };
 

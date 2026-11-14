@@ -1,9 +1,19 @@
-import type { Disposable, ExtensionContext } from 'vscode';
-import type { ConfigCache, SnippetDefinition } from './types';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { CompletionItem, CompletionItemKind, languages, MarkdownString, SnippetString, window, workspace } from 'vscode';
+
+import type { Disposable, ExtensionContext } from 'vscode';
+import {
+  CompletionItem,
+  CompletionItemKind,
+  languages,
+  MarkdownString,
+  SnippetString,
+  window,
+  workspace,
+} from 'vscode';
+
 import * as meta from './generated/meta';
+import type { ConfigCache, SnippetDefinition } from './types';
 
 /**
  * 代码片段管理
@@ -123,9 +133,7 @@ export class SnippetManager {
     const provider = languages.registerCompletionItemProvider(
       ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'html'],
       {
-        provideCompletionItems: (
-          document: { languageId: string },
-        ) => {
+        provideCompletionItems: (document: { languageId: string }) => {
           const items: CompletionItem[] = [];
           const languageId = document.languageId;
 
@@ -134,22 +142,46 @@ export class SnippetManager {
 
           // JavaScript 和 TypeScript 基础代码片段始终启用（加载 common）
           // 包括：js、ts、jsx、tsx、vue 文件
-          const shouldLoadCommon = ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'html'].includes(languageId);
+          const shouldLoadCommon = [
+            'javascript',
+            'typescript',
+            'javascriptreact',
+            'typescriptreact',
+            'vue',
+            'html',
+          ].includes(languageId);
           if (shouldLoadCommon) {
             this.addSnippetsToItems(items, 'common');
           }
 
           // Vue - 根据代码片段类型和语言环境智能过滤
-          if (enabledFrameworks.includes('vue') && this.cachedConfig.vue.languageScopes.includes(languageId)) {
+          if (
+            enabledFrameworks.includes('vue') &&
+            this.cachedConfig.vue.languageScopes.includes(languageId)
+          ) {
             // 定义纯模板指令片段（只在 .vue 文件中可用）
-            const vueOnlyPrefixes = ['vfor', 'vmodel', 'von', 'vbind', 'vif', 'vshow', 'vtext', 'vhtml', 'vpre', 'vcloak', 'vonce', 'vstyle', 'vclass', 'vslot'];
+            const vueOnlyPrefixes = [
+              'vfor',
+              'vmodel',
+              'von',
+              'vbind',
+              'vif',
+              'vshow',
+              'vtext',
+              'vhtml',
+              'vpre',
+              'vcloak',
+              'vonce',
+              'vstyle',
+              'vclass',
+              'vslot',
+            ];
             // 定义模板代码片段前缀
             const templatePrefixes = ['vinit', 'vbase', 'vts'];
 
             this.addSnippetsToItems(items, 'vue', (prefix) => {
               // 在 .vue 文件中，所有片段都可用
-              if (languageId === 'vue')
-                return true;
+              if (languageId === 'vue') return true;
 
               // 在 .js/.ts 文件中，只加载 router/pinia/vuex/script 相关片段
               // 排除纯模板指令片段和模板代码片段
@@ -164,7 +196,10 @@ export class SnippetManager {
           }
 
           // React - 根据代码片段类型和语言环境智能过滤
-          if (enabledFrameworks.includes('react') && this.cachedConfig.react.languageScopes.includes(languageId)) {
+          if (
+            enabledFrameworks.includes('react') &&
+            this.cachedConfig.react.languageScopes.includes(languageId)
+          ) {
             this.addSnippetsToItems(items, 'react', (prefix) => {
               // zustand 在所有支持的语言中都可用（js/ts/jsx/tsx）
               if (prefix.startsWith('rzust') || prefix.startsWith('rtzust')) {
@@ -183,15 +218,15 @@ export class SnippetManager {
 
           // Vitest - 在 JS/TS 文件中可用
           if (
-            (languageId === 'javascript' || languageId === 'typescript')
-            && enabledFrameworks.includes('vitest')
+            (languageId === 'javascript' || languageId === 'typescript') &&
+            enabledFrameworks.includes('vitest')
           ) {
             this.addSnippetsToItems(items, 'vitest');
           }
 
           return items;
         },
-      },
+      }
     );
 
     // 将提供器存储到 Map 中，方便后续清理
@@ -233,7 +268,9 @@ export class SnippetManager {
         // 获取更新后的框架列表
         const enabledFrameworks = this.cachedConfig.enabledFrameworks;
         // 显示通知，告知用户配置已更新
-        window.showInformationMessage(`Snippet config updated! Enabled frameworks: ${enabledFrameworks.join(', ')}`);
+        window.showInformationMessage(
+          `Snippet config updated! Enabled frameworks: ${enabledFrameworks.join(', ')}`
+        );
       }
     });
 
@@ -250,14 +287,13 @@ export class SnippetManager {
   private addSnippetsToItems(
     items: CompletionItem[],
     framework: string,
-    filter?: (prefix: string) => boolean,
+    filter?: (prefix: string) => boolean
   ): void {
     // 从缓存中获取该框架的代码片段
     const snippets = this.cachedSnippets.get(framework);
 
     // 如果没有找到代码片段，直接返回
-    if (!snippets)
-      return;
+    if (!snippets) return;
 
     // 遍历每个代码片段，创建对应的 CompletionItem
     snippets.forEach((snippet) => {
@@ -293,7 +329,7 @@ export class SnippetManager {
       // 创建代码提示项
       const item = new CompletionItem(
         prefix,
-        CompletionItemKind.Snippet, // 类型为代码片段
+        CompletionItemKind.Snippet // 类型为代码片段
       );
 
       // 设置插入文本（使用 SnippetString 支持占位符）
@@ -302,8 +338,9 @@ export class SnippetManager {
       // 如果是 React 框架且配置了 importReactOnTop，在组件顶部添加 React 导入
       if (framework === 'react' && this.cachedConfig.react.importReactOnTop) {
         // 检查是否是组件片段（包含 export/function/const/class 且包含 JSX）
-        const isComponent = (body.includes('export') || body.includes('function') || body.includes('const'))
-          && (body.includes('return (') || body.includes('<'));
+        const isComponent =
+          (body.includes('export') || body.includes('function') || body.includes('const')) &&
+          (body.includes('return (') || body.includes('<'));
 
         if (isComponent && !body.includes('import React')) {
           // 在顶部添加 React 导入

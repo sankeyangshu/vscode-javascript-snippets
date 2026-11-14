@@ -5,7 +5,7 @@ const nestV4Middleware: Snippet = {
   key: 'nest.v4.middleware',
   prefix: 'n-v4-middleware',
   body: [
-    'import { Middleware, NestMiddleware, ExpressMiddleware } from \'@nestjs/common\';',
+    "import { Middleware, NestMiddleware, ExpressMiddleware } from '@nestjs/common';",
     '',
     '@Middleware()',
     `export class \${1:${Placeholders.First}}Middleware implements NestMiddleware {`,
@@ -24,7 +24,7 @@ const nestMiddleware: Snippet = {
   key: 'nest.middleware',
   prefix: 'n-middleware',
   body: [
-    'import { Injectable, NestMiddleware, MiddlewareFunction } from \'@nestjs/common\';',
+    "import { Injectable, NestMiddleware, MiddlewareFunction } from '@nestjs/common';",
     '',
     '@Injectable()',
     `export class \${1:${Placeholders.First}}Middleware implements NestMiddleware {`,

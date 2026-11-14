@@ -83,7 +83,7 @@ const vuexModule: Snippet = {
   body: [
     'export default {',
     '\tstate: {',
-    '\t\tvalue: \'my value\'',
+    "\t\tvalue: 'my value'",
     '\t},',
     '\tgetters: {',
     '\t\tvalue: state => {',
@@ -97,7 +97,7 @@ const vuexModule: Snippet = {
     '\t},',
     '\tactions: {',
     '\t\tupdateValue({commit}, payload) {',
-    '\t\t\tcommit(\'updateValue\', payload);',
+    "\t\t\tcommit('updateValue', payload);",
     '\t\t}',
     '\t}',
     '};',

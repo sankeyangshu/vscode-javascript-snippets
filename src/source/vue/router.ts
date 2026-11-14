@@ -9,12 +9,12 @@ const vueRouterBase: Snippet = {
   prefix: 'vrouter',
   body: [
     'import { createApp } from Vue;',
-    'import { createRouter, createWebHashHistory } from \'vue-router\';',
+    "import { createRouter, createWebHashHistory } from 'vue-router';",
     '',
     'export const router = createRouter({',
     '\thistory: createWebHashHistory(),',
     '\troutes: [',
-    '\t\t{ path: \'/path\', component: component }',
+    "\t\t{ path: '/path', component: component }",
     '\t]',
     '});',
   ],
@@ -85,7 +85,11 @@ const vueRouterBeforeEnter: Snippet = {
 const vueRouterBeforeRouteEnter: Snippet = {
   key: 'vue.router.beforeRouteEnter',
   prefix: 'vbeforerouteenter',
-  body: ['beforeRouteEnter(to, from, next) {', `\tnext(vm => {\${1:${Placeholders.First}}});`, '},'],
+  body: [
+    'beforeRouteEnter(to, from, next) {',
+    `\tnext(vm => {\${1:${Placeholders.First}}});`,
+    '},',
+  ],
   description: 'Vue Router component guards beforeRouteEnter',
 };
 

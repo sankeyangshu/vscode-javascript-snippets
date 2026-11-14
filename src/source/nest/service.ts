@@ -5,7 +5,7 @@ const nestProvider: Snippet = {
   key: 'nest.provider',
   prefix: 'n-provider',
   body: [
-    'import { Injectable } from \'@nestjs/common\';',
+    "import { Injectable } from '@nestjs/common';",
     '',
     '@Injectable()',
     `export class \${1:${Placeholders.First}}Service {`,
@@ -20,9 +20,9 @@ const nestMongooseService: Snippet = {
   key: 'nest.mongoose.service',
   prefix: 'n-mongoose-service',
   body: [
-    'import { Model } from \'mongoose\';',
-    'import { Injectable, Inject } from \'@nestjs/common\';',
-    'import { InjectModel } from \'@nestjs/mongoose\';',
+    "import { Model } from 'mongoose';",
+    "import { Injectable, Inject } from '@nestjs/common';",
+    "import { InjectModel } from '@nestjs/mongoose';",
     '',
     `import { Create\${1:${Placeholders.First}}Dto } from './dto/create-\${2:${Placeholders.Second}}.dto';`,
     `import { \${1:${Placeholders.First}} } from './interfaces/\${2:${Placeholders.Second}}s.interface';`,

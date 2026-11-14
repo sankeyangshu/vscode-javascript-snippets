@@ -5,7 +5,7 @@ const zustand: Snippet = {
   key: 'zustand',
   prefix: 'rzust',
   body: [
-    'import { create } from \'zustand\'',
+    "import { create } from 'zustand'",
     '',
     `export const \${1:${Placeholders.First}} = create((set) => ({`,
     `  \${2:${Placeholders.Second}}`,
@@ -19,7 +19,7 @@ const zustandTypescript: Snippet = {
   key: 'zustand.typescript',
   prefix: 'rtzust',
   body: [
-    'import { create } from \'zustand\'',
+    "import { create } from 'zustand'",
     '',
     `interface \${1:${Placeholders.First}} {`,
     '',

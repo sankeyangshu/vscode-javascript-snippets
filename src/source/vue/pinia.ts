@@ -8,7 +8,7 @@ const vuePiniaStore: Snippet = {
   key: 'vue.pinia.store',
   prefix: 'vpinia',
   body: [
-    'import { defineStore } from \'pinia\';',
+    "import { defineStore } from 'pinia';",
     '',
     `export const \${1:${Placeholders.First}} = defineStore({`,
     `\tid: '\${2:${Placeholders.Second}}',`,
@@ -51,7 +51,7 @@ const vuePiniaSetupStore: Snippet = {
   key: 'vue.pinia.setup',
   prefix: 'vpinia-setup',
   body: [
-    'import { defineStore } from \'pinia\';',
+    "import { defineStore } from 'pinia';",
     '',
     `export const \${1:${Placeholders.First}} = defineStore('\${2:${Placeholders.Second}}', () => {`,
     '\t$0',

@@ -5,7 +5,7 @@ const useStrict: Snippet = {
   key: 'use.strict',
   prefix: 'uss',
   body: ['use strict'],
-  description: 'Insert \'use strict\' Statement',
+  description: "Insert 'use strict' Statement",
 };
 
 const require: Snippet = {

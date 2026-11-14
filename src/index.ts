@@ -1,4 +1,5 @@
 import type { ExtensionContext } from 'vscode';
+
 import { SnippetManager } from './core';
 
 export function activate(context: ExtensionContext) {

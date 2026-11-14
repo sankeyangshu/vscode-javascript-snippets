@@ -5,7 +5,7 @@ const nestMongooseInterface: Snippet = {
   key: 'nest.mongoose.interface',
   prefix: 'n-mongoose-interface',
   body: [
-    'import { Document } from \'mongoose\';',
+    "import { Document } from 'mongoose';",
     '',
     `export interface \${1:${Placeholders.First}} extends Document {`,
     `\treadonly \${2:${Placeholders.Second}}: string;`,

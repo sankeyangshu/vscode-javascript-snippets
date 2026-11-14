@@ -87,7 +87,9 @@ const constSpyOn: Snippet = {
 const constSpyOnMockImplementation: Snippet = {
   key: 'const.spyOn.mockImplementation',
   prefix: 'csi',
-  body: [`const \${2:method}Spy = vi.spyOn(\${1:global}, '\${2:method}')).mockImplementation(() => $0)`],
+  body: [
+    `const \${2:method}Spy = vi.spyOn(\${1:global}, '\${2:method}')).mockImplementation(() => $0)`,
+  ],
   description: 'creates a spy variable for a vi.spyOn() with mock implementation',
 };
 

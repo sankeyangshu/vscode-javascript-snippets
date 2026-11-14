@@ -5,7 +5,7 @@ const nestPipe: Snippet = {
   key: 'nest.pipe',
   prefix: 'n-pipe',
   body: [
-    'import { PipeTransform, Injectable, ArgumentMetadata } from \'@nestjs/common\';',
+    "import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';",
     '',
     '@Injectable()',
     `export class \${1:${Placeholders.First}}Pipe implements PipeTransform {`,

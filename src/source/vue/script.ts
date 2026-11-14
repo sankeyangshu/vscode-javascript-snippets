@@ -128,7 +128,9 @@ const vueImportComponent: Snippet = {
 const vueEmit: Snippet = {
   key: 'vue.emit',
   prefix: 'vemit',
-  body: [`\${1:${Placeholders.First}}.\\$emit('\${2:${Placeholders.Second}}', \${3:${Placeholders.Third}})`],
+  body: [
+    `\${1:${Placeholders.First}}.\\$emit('\${2:${Placeholders.Second}}', \${3:${Placeholders.Third}})`,
+  ],
   description: 'Vue Emit',
 };
 
@@ -160,7 +162,9 @@ const vueSet: Snippet = {
 const vueDelete: Snippet = {
   key: 'vue.delete',
   prefix: 'vdelete',
-  body: [`\${1:${Placeholders.First}}.\\$delete(\${2:${Placeholders.Second}}, \${3:${Placeholders.Third}})`],
+  body: [
+    `\${1:${Placeholders.First}}.\\$delete(\${2:${Placeholders.Second}}, \${3:${Placeholders.Third}})`,
+  ],
   description: 'Vue Delete',
 };
 

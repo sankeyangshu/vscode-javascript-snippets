@@ -5,7 +5,7 @@ const nestTypeORMEntity: Snippet = {
   key: 'nest.typeorm.entity',
   prefix: 'n-typeorm-entity',
   body: [
-    'import { Entity, PrimaryGeneratedColumn, Column } from \'typeorm\';',
+    "import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';",
     '',
     '@Entity()',
     `export class \${1:${Placeholders.First}} {`,
@@ -24,7 +24,7 @@ const nestTypeORMRepository: Snippet = {
   key: 'nest.typeorm.repository',
   prefix: 'n-typeorm-repository',
   body: [
-    'import { EntityRepository, Repository } from \'typeorm\';',
+    "import { EntityRepository, Repository } from 'typeorm';",
     `import { \${1:${Placeholders.First}} } from '../entity/\${1:${Placeholders.First}}';`,
     '',
     `@EntityRepository(\${1:${Placeholders.First}})`,
